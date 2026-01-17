@@ -27,8 +27,10 @@ public enum VillagerProfession {
 
     // ================ 诺曼特有 ================
     KNIGHT("knight", "Knight", "骑士", true),
+    SOLDIER("soldier", "Soldier", "士兵", true),
     PRIEST("priest", "Priest", "牧师", true),
     BLACKSMITH("blacksmith", "Blacksmith", "铁匠", true),
+    BAKER("baker", "Baker", "面包师", true),
 
     // ================ 拜占庭特有 ================
     SILK_FARMER("silk_farmer", "Silk Farmer", "蚕农", true),
@@ -103,8 +105,8 @@ public enum VillagerProfession {
      * 检查是否为战斗职业
      */
     public boolean isCombatProfession() {
-        return this == GUARD || this == KNIGHT || this == SAMURAI ||
-               this == HUNTER || this == RAIDER;
+        return this == GUARD || this == KNIGHT || this == SOLDIER ||
+               this == SAMURAI || this == HUNTER || this == RAIDER;
     }
 
     /**

@@ -82,6 +82,11 @@ public class Village {
     /** 待建造项目列表 */
     private final CopyOnWriteArrayList<BuildingProject> buildingProjects = new CopyOnWriteArrayList<>();
 
+    // ================ 村民生成 ================
+
+    /** 村民生成器 */
+    private transient VillagerSpawner villagerSpawner;
+
     // ================ 状态标志 ================
 
     /** 是否已加载 */
@@ -98,6 +103,7 @@ public class Village {
         this.culture = culture;
         this.name = generateVillageName(culture);
         this.createdTime = System.currentTimeMillis();
+        this.villagerSpawner = new VillagerSpawner(this);
     }
 
     /**
@@ -105,6 +111,7 @@ public class Village {
      */
     public Village(UUID id) {
         this.villageId = id;
+        this.villagerSpawner = new VillagerSpawner(this);
     }
 
     // ================ 名称生成 ================
@@ -382,9 +389,26 @@ public class Village {
         // 清理无效的村民引用
         activeVillagers.removeIf(v -> v.isRemoved() || !v.isAlive());
 
+        // 更新村民生成
+        if (villagerSpawner != null) {
+            villagerSpawner.tick(level);
+        }
+
         // TODO: 更新建造进度
         // TODO: 更新村庄经济
         // TODO: 触发村庄事件
+    }
+
+    // ================ 村民生成方法 ================
+
+    /**
+     * 获取村民生成器
+     */
+    public VillagerSpawner getVillagerSpawner() {
+        if (villagerSpawner == null) {
+            villagerSpawner = new VillagerSpawner(this);
+        }
+        return villagerSpawner;
     }
 
     // ================ NBT序列化 ================
