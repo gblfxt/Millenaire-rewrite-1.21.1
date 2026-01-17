@@ -3,6 +3,7 @@ package com.jasoncian.millenaire_rewrite.blocks.functional;
 import com.jasoncian.millenaire_rewrite.blockentity.TownHallBlockEntity;
 import com.jasoncian.millenaire_rewrite.core.ModBlockEntities;
 import com.jasoncian.millenaire_rewrite.entity.culture.Culture;
+import com.jasoncian.millenaire_rewrite.menu.TownHallMenu;
 import com.jasoncian.millenaire_rewrite.village.Village;
 import com.jasoncian.millenaire_rewrite.village.VillageManager;
 import com.mojang.serialization.MapCodec;
@@ -157,23 +158,8 @@ public class TownHallBlock extends BaseEntityBlock {
         if (!level.isClientSide()) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof TownHallBlockEntity townHallBE) {
-                // TODO: 打开村庄管理GUI
-                // 目前先显示村庄信息
-
-                if (level instanceof ServerLevel serverLevel) {
-                    VillageManager manager = VillageManager.get(serverLevel);
-                    Village village = manager.getVillageAt(pos);
-
-                    if (village != null) {
-                        player.displayClientMessage(
-                            net.minecraft.network.chat.Component.literal(
-                                "§6" + village.getName() + "§r\n" +
-                                "Buildings: " + village.getBuildingCount() + "\n" +
-                                "Villagers: " + village.getActiveVillagerCount() + "\n" +
-                                "Deniers: " + village.getDeniers()),
-                            false);
-                    }
-                }
+                // 打开村庄管理GUI
+                player.openMenu(townHallBE, buf -> TownHallMenu.writeToBuffer(buf, townHallBE));
             }
         }
 

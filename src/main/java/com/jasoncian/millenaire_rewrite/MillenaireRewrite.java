@@ -3,6 +3,7 @@ package com.jasoncian.millenaire_rewrite;
 import com.jasoncian.millenaire_rewrite.client.gui.FirePitScreen;
 import com.jasoncian.millenaire_rewrite.client.gui.ImportTableScreen;
 import com.jasoncian.millenaire_rewrite.client.gui.LockedChestScreen;
+import com.jasoncian.millenaire_rewrite.client.gui.TownHallScreen;
 import com.jasoncian.millenaire_rewrite.client.gui.VillagerInteractionScreen;
 import com.jasoncian.millenaire_rewrite.core.ModBlocks;
 import com.jasoncian.millenaire_rewrite.core.ModItems;
@@ -139,6 +140,8 @@ public class MillenaireRewrite {
             event.register(ModMenuTypes.IMPORT_TABLE.get(), ImportTableScreen::new);
             // 注册村民交互GUI屏幕
             event.register(ModMenuTypes.VILLAGER_INTERACTION.get(), VillagerInteractionScreen::new);
+            // 注册市政厅GUI屏幕
+            event.register(ModMenuTypes.TOWN_HALL.get(), TownHallScreen::new);
         }
 
         @SubscribeEvent

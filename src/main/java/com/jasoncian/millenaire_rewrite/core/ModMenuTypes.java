@@ -4,6 +4,7 @@ import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 import com.jasoncian.millenaire_rewrite.menu.FirePitMenu;
 import com.jasoncian.millenaire_rewrite.menu.ImportTableMenu;
 import com.jasoncian.millenaire_rewrite.menu.LockedChestMenu;
+import com.jasoncian.millenaire_rewrite.menu.TownHallMenu;
 import com.jasoncian.millenaire_rewrite.menu.VillagerInteractionMenu;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.inventory.MenuType;
@@ -41,6 +42,12 @@ public class ModMenuTypes {
     /** 导入桌菜单 */
     public static final DeferredHolder<MenuType<?>, MenuType<ImportTableMenu>> IMPORT_TABLE =
         MENUS.register("import_table", () -> IMenuTypeExtension.create(ImportTableMenu::new));
+
+    // ================ 村庄管理菜单 ================
+
+    /** 市政厅菜单 */
+    public static final DeferredHolder<MenuType<?>, MenuType<TownHallMenu>> TOWN_HALL =
+        MENUS.register("town_hall", () -> IMenuTypeExtension.create(TownHallMenu::new));
 
     // ================ 村民交互菜单 ================
 

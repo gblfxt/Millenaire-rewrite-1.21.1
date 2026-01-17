@@ -1,12 +1,18 @@
 package com.jasoncian.millenaire_rewrite.blockentity;
 
 import com.jasoncian.millenaire_rewrite.core.ModBlockEntities;
+import com.jasoncian.millenaire_rewrite.menu.TownHallMenu;
 import com.jasoncian.millenaire_rewrite.village.Village;
 import com.jasoncian.millenaire_rewrite.village.VillageManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,7 +26,7 @@ import java.util.UUID;
  * @author Based on OldSource TownHall
  * @version 1.0.0
  */
-public class TownHallBlockEntity extends BlockEntity {
+public class TownHallBlockEntity extends BlockEntity implements MenuProvider {
 
     /** 关联的村庄ID */
     @Nullable
@@ -108,6 +114,23 @@ public class TownHallBlockEntity extends BlockEntity {
     @Nullable
     public UUID getVillageId() {
         return villageId;
+    }
+
+    // ================ MenuProvider实现 ================
+
+    @Override
+    public Component getDisplayName() {
+        Village village = getVillage();
+        if (village != null) {
+            return Component.literal(village.getName());
+        }
+        return Component.translatable("block.millenaire_rewrite.town_hall");
+    }
+
+    @Nullable
+    @Override
+    public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
+        return new TownHallMenu(containerId, playerInventory, this);
     }
 
     // ================ NBT序列化 ================
