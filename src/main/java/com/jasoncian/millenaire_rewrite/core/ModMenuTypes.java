@@ -5,6 +5,7 @@ import com.jasoncian.millenaire_rewrite.menu.FirePitMenu;
 import com.jasoncian.millenaire_rewrite.menu.ImportTableMenu;
 import com.jasoncian.millenaire_rewrite.menu.LockedChestMenu;
 import com.jasoncian.millenaire_rewrite.menu.TownHallMenu;
+import com.jasoncian.millenaire_rewrite.menu.TradingMenu;
 import com.jasoncian.millenaire_rewrite.menu.VillagerInteractionMenu;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.inventory.MenuType;
@@ -54,6 +55,10 @@ public class ModMenuTypes {
     /** 村民交互菜单 */
     public static final DeferredHolder<MenuType<?>, MenuType<VillagerInteractionMenu>> VILLAGER_INTERACTION =
         MENUS.register("villager_interaction", () -> IMenuTypeExtension.create(VillagerInteractionMenu::new));
+
+    /** 交易菜单 */
+    public static final DeferredHolder<MenuType<?>, MenuType<TradingMenu>> TRADING =
+        MENUS.register("trading", () -> IMenuTypeExtension.create(TradingMenu::new));
 
     /**
      * 注册所有菜单类型到模组事件总线

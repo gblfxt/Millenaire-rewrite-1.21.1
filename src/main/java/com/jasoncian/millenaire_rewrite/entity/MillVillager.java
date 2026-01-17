@@ -35,6 +35,9 @@ import com.jasoncian.millenaire_rewrite.menu.VillagerInteractionMenu;
 import com.jasoncian.millenaire_rewrite.item.InvItem;
 import com.jasoncian.millenaire_rewrite.entity.ai.GoalManager;
 import com.jasoncian.millenaire_rewrite.entity.ai.goals.*;
+import com.jasoncian.millenaire_rewrite.trade.VillagerTrader;
+import com.jasoncian.millenaire_rewrite.village.Village;
+import com.jasoncian.millenaire_rewrite.village.VillageManager;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -114,6 +117,9 @@ public class MillVillager extends PathfinderMob {
     /** Millenaire目标管理器 */
     private final GoalManager goalManager;
 
+    /** 交易系统 */
+    private final VillagerTrader trader;
+
     /** 当前目标键 */
     private String currentGoalKey = "";
 
@@ -156,6 +162,7 @@ public class MillVillager extends PathfinderMob {
         super(entityType, level);
         this.villagerId = UUID.randomUUID().getMostSignificantBits();
         this.goalManager = new GoalManager(this);
+        this.trader = new VillagerTrader(this);
         ((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
 
         // 初始化Millenaire目标系统
@@ -251,6 +258,9 @@ public class MillVillager extends PathfinderMob {
         if (!this.level().isClientSide()) {
             // 更新目标管理器
             goalManager.tick();
+
+            // 更新交易系统
+            trader.tick();
 
             // 如果有目标目的地，更新导航
             updateNavigationFromGoal();
@@ -408,6 +418,11 @@ public class MillVillager extends PathfinderMob {
         if (!heldItemOffHand.isEmpty()) {
             tag.put("HeldItemOffHand", heldItemOffHand.save(this.registryAccess()));
         }
+
+        // 保存交易数据
+        CompoundTag traderTag = new CompoundTag();
+        trader.save(traderTag);
+        tag.put("Trader", traderTag);
     }
 
     @Override
@@ -476,6 +491,11 @@ public class MillVillager extends PathfinderMob {
         }
         if (tag.contains("HeldItemOffHand")) {
             heldItemOffHand = ItemStack.parse(this.registryAccess(), tag.getCompound("HeldItemOffHand")).orElse(ItemStack.EMPTY);
+        }
+
+        // 加载交易数据
+        if (tag.contains("Trader")) {
+            trader.load(tag.getCompound("Trader"));
         }
     }
 
@@ -585,6 +605,21 @@ public class MillVillager extends PathfinderMob {
         this.townHallPos = pos;
     }
 
+    /**
+     * 获取村民所属的村庄
+     */
+    @Nullable
+    public Village getHomeVillage() {
+        if (townHallPos == null) {
+            return null;
+        }
+        if (this.level() instanceof ServerLevel serverLevel) {
+            VillageManager manager = VillageManager.get(serverLevel);
+            return manager.getVillageAt(townHallPos);
+        }
+        return null;
+    }
+
     public boolean isHired() {
         return hiredBy != null && hiredUntil > System.currentTimeMillis();
     }
@@ -622,6 +657,13 @@ public class MillVillager extends PathfinderMob {
      */
     public GoalManager getGoalManager() {
         return goalManager;
+    }
+
+    /**
+     * 获取交易系统
+     */
+    public VillagerTrader getTrader() {
+        return trader;
     }
 
     /**
