@@ -1,10 +1,16 @@
 package com.jasoncian.millenaire_rewrite.datagen;
 
 import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
+import com.jasoncian.millenaire_rewrite.blocks.system.BasicBuildingMaterial;
+import com.jasoncian.millenaire_rewrite.blocks.system.BlockVariantType;
+import com.jasoncian.millenaire_rewrite.blocks.system.BuildingBlockRegistry;
+import com.jasoncian.millenaire_rewrite.blocks.system.CulturalBlockFamily;
 import com.jasoncian.millenaire_rewrite.core.ModItems;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 /**
  * 语言文件数据生成器 - 自动生成多语言翻译文件
@@ -323,6 +329,33 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.AMULET_YGGDRASIL.get(), "Yggdrasil Amulet");
         add(ModItems.AMULET_SKOLL_HATI.get(), "Skoll Hati Amulet");
 
+        // ================ Functional Blocks ================
+        add(ModItems.FIRE_PIT.get(), "Fire Pit");
+        add("container.millenaire_rewrite.fire_pit", "Fire Pit");
+        add(ModItems.LOCKED_CHEST.get(), "Locked Chest");
+        add("container.millenaire_rewrite.locked_chest", "Locked Chest");
+        add("container.millenaire_rewrite.locked_chest.locked", "This chest is locked!");
+        add("container.millenaire_rewrite.locked_chest.locked_hint", "Locked - Items cannot be taken");
+        add(ModItems.IMPORT_TABLE.get(), "Import Table");
+        add("container.millenaire_rewrite.import_table", "Import Table");
+        add("gui.millenaire_rewrite.import_table.import", "Import");
+        add("gui.millenaire_rewrite.import_table.export", "Export");
+        add("gui.millenaire_rewrite.import_table.settings", "Settings");
+        add("gui.millenaire_rewrite.import_table.new_area", "New Area");
+        add("gui.millenaire_rewrite.import_table.dimensions", "Dimensions: %dx%d");
+        add("gui.millenaire_rewrite.import_table.variation", "Variation: %s");
+        add("gui.millenaire_rewrite.import_table.level", "Level: %d");
+        add("gui.millenaire_rewrite.import_table.orientation", "Orientation: %s");
+        add("gui.millenaire_rewrite.import_table.starting_level", "Starting Level: %d");
+        add("gui.millenaire_rewrite.import_table.options", "Export Options:");
+        add("gui.millenaire_rewrite.import_table.export_snow", "Export Snow");
+        add("gui.millenaire_rewrite.import_table.mock_blocks", "Mock Blocks");
+        add("gui.millenaire_rewrite.import_table.preserve_ground", "Preserve Ground");
+        add("message.millenaire_rewrite.import_table.no_plan", "No building plan selected!");
+        add("message.millenaire_rewrite.import_table.import_not_implemented", "Import not yet implemented");
+        add("message.millenaire_rewrite.import_table.export_not_implemented", "Export not yet implemented");
+        add("message.millenaire_rewrite.import_table.invalid_dimensions", "Invalid dimensions!");
+
         // ================ Decorative Items ================
         add(ModItems.TAPESTRY.get(), "Tapestry");
         add(ModItems.INDIAN_STATUE.get(), "Indian Statue");
@@ -384,6 +417,38 @@ public class ModLanguageProvider extends LanguageProvider {
         add("currency.millenaire_rewrite.denier", "Denier");
         add("currency.millenaire_rewrite.zero", "0 Copper Denier");
         addEnglishParchmentContentTranslations();
+
+        // Auto-generate English block translations
+        addEnglishBlockTranslations();
+    }
+
+    /**
+     * Auto-generate English translations for all blocks in BuildingBlockRegistry
+     */
+    private void addEnglishBlockTranslations() {
+        for (var entry : BuildingBlockRegistry.getAllBlocks().entrySet()) {
+            String registryName = entry.getKey();
+            String translationKey = "block.millenaire_rewrite." + registryName;
+            String displayName = generateEnglishBlockName(registryName);
+            add(translationKey, displayName);
+        }
+    }
+
+    /**
+     * Generate a human-readable English name from a registry name
+     */
+    private String generateEnglishBlockName(String registryName) {
+        // Split by underscore and capitalize each word
+        String[] parts = registryName.split("_");
+        StringBuilder result = new StringBuilder();
+        for (String part : parts) {
+            if (!part.isEmpty()) {
+                result.append(Character.toUpperCase(part.charAt(0)))
+                      .append(part.substring(1))
+                      .append(" ");
+            }
+        }
+        return result.toString().trim();
     }
 
     private void addChineseTranslations() {
@@ -650,6 +715,33 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.AMULET_YGGDRASIL.get(), "世界树护身符");
         add(ModItems.AMULET_SKOLL_HATI.get(), "斯库尔·哈提护身符");
 
+        // ================ 功能方块 ================
+        add(ModItems.FIRE_PIT.get(), "火坑");
+        add("container.millenaire_rewrite.fire_pit", "火坑");
+        add(ModItems.LOCKED_CHEST.get(), "锁定箱子");
+        add("container.millenaire_rewrite.locked_chest", "锁定箱子");
+        add("container.millenaire_rewrite.locked_chest.locked", "这个箱子已被锁定！");
+        add("container.millenaire_rewrite.locked_chest.locked_hint", "已锁定 - 无法取出物品");
+        add(ModItems.IMPORT_TABLE.get(), "导入桌");
+        add("container.millenaire_rewrite.import_table", "导入桌");
+        add("gui.millenaire_rewrite.import_table.import", "导入");
+        add("gui.millenaire_rewrite.import_table.export", "导出");
+        add("gui.millenaire_rewrite.import_table.settings", "设置");
+        add("gui.millenaire_rewrite.import_table.new_area", "新建区域");
+        add("gui.millenaire_rewrite.import_table.dimensions", "尺寸: %dx%d");
+        add("gui.millenaire_rewrite.import_table.variation", "变体: %s");
+        add("gui.millenaire_rewrite.import_table.level", "级别: %d");
+        add("gui.millenaire_rewrite.import_table.orientation", "方向: %s");
+        add("gui.millenaire_rewrite.import_table.starting_level", "起始高度: %d");
+        add("gui.millenaire_rewrite.import_table.options", "导出选项:");
+        add("gui.millenaire_rewrite.import_table.export_snow", "导出雪");
+        add("gui.millenaire_rewrite.import_table.mock_blocks", "模拟方块");
+        add("gui.millenaire_rewrite.import_table.preserve_ground", "保留地面");
+        add("message.millenaire_rewrite.import_table.no_plan", "未选择建筑模板！");
+        add("message.millenaire_rewrite.import_table.import_not_implemented", "导入功能尚未实现");
+        add("message.millenaire_rewrite.import_table.export_not_implemented", "导出功能尚未实现");
+        add("message.millenaire_rewrite.import_table.invalid_dimensions", "无效的尺寸！");
+
         // ================ 装饰物品 ================
         add(ModItems.TAPESTRY.get(), "挂毯");
         add(ModItems.INDIAN_STATUE.get(), "印度雕像");
@@ -729,6 +821,53 @@ public class ModLanguageProvider extends LanguageProvider {
         add("currency.millenaire_rewrite.denier", "第纳尔");
         add("currency.millenaire_rewrite.zero", "0 铜第纳尔");
         addChineseParchmentContentTranslations();
+
+        // Auto-generate Chinese block translations
+        addChineseBlockTranslations();
+    }
+
+    /**
+     * Auto-generate Chinese translations for all blocks in BuildingBlockRegistry
+     */
+    private void addChineseBlockTranslations() {
+        for (var entry : BuildingBlockRegistry.getAllBlocks().entrySet()) {
+            String registryName = entry.getKey();
+            String translationKey = "block.millenaire_rewrite." + registryName;
+            String displayName = generateChineseBlockName(registryName);
+            add(translationKey, displayName);
+        }
+    }
+
+    /**
+     * Generate a Chinese name from a registry name
+     * Uses BasicBuildingMaterial's displayName when possible
+     */
+    private String generateChineseBlockName(String registryName) {
+        // Try to find the material by matching registry name prefix
+        for (BasicBuildingMaterial material : BasicBuildingMaterial.values()) {
+            if (registryName.contains(material.getRegistryName())) {
+                String baseName = material.getDisplayName();
+                // Determine variant suffix
+                if (registryName.endsWith("_stairs")) {
+                    return baseName + "楼梯";
+                } else if (registryName.endsWith("_slab")) {
+                    return baseName + "台阶";
+                } else if (registryName.endsWith("_wall")) {
+                    return baseName + "墙";
+                } else if (registryName.endsWith("_block")) {
+                    return baseName;
+                }
+                // Check for culture prefix
+                for (CulturalBlockFamily culture : CulturalBlockFamily.values()) {
+                    if (registryName.startsWith(culture.getRegistryPrefix() + "_")) {
+                        return culture.getDisplayName() + baseName;
+                    }
+                }
+                return baseName;
+            }
+        }
+        // Fallback to English name
+        return generateEnglishBlockName(registryName);
     }
 
     /**

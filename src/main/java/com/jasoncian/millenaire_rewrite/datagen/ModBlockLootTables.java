@@ -1,10 +1,14 @@
 package com.jasoncian.millenaire_rewrite.datagen;
 
+import com.jasoncian.millenaire_rewrite.blocks.base.BaseBuildingSlabBlock;
+import com.jasoncian.millenaire_rewrite.blocks.decorative.PathBlock;
+import com.jasoncian.millenaire_rewrite.blocks.system.BuildingBlockRegistry;
 import com.jasoncian.millenaire_rewrite.core.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Set;
@@ -28,28 +32,36 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         // Village Stone - 不掉落任何物品（参考legacy的quantityDropped返回0）
         // 通过不添加战利品表来实现无掉落
 
-        // ================ 装饰方块战利品表 - 已弃用 ================
-        // ⚠️  装饰方块战利品表已迁移至统一方块系统
-        // 新系统会自动为每个 BasicBuildingMaterial 生成对应的战利品表
-        // 所有建筑方块族（基础方块+楼梯+半砖+墙）都会掉落自身
+        // ================ BuildingBlockRegistry 自动战利品表生成 ================
+        // 自动为所有建筑方块生成战利品表
+        for (var entry : BuildingBlockRegistry.getAllBlocks().entrySet()) {
+            Block block = entry.getValue().get();
 
-        /*
-        // 装饰方块 - 掉落自身 - 已弃用
-        this.dropSelf(ModBlocks.DECORATIVE_STONE.get());
-        this.dropSelf(ModBlocks.DECORATIVE_WOOD.get());
-        this.dropSelf(ModBlocks.DECORATIVE_EARTH.get());
-        */
-
-        // TODO: 为新的统一方块系统添加自动化战利品表生成支持
-        // TODO: 通过BuildingBlockRegistry自动生成所有方块族的战利品表
+            if (block instanceof SlabBlock slabBlock) {
+                // 台阶方块使用特殊掉落逻辑（放置两个时掉落1个）
+                this.add(slabBlock, createSlabItemTable(slabBlock));
+            } else {
+                // 其他方块掉落自身
+                this.dropSelf(block);
+            }
+        }
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        // 注意：目前使用 ModBlocks 作为主要的方块注册器
-        // 已整合了原ModBlocksNew的统一方块系统功能
-        return ModBlocks.BLOCKS.getEntries().stream()
+        // 合并 ModBlocks 和 BuildingBlockRegistry 中的所有方块
+        java.util.List<Block> allBlocks = new java.util.ArrayList<>();
+
+        // 添加 ModBlocks 中的方块
+        ModBlocks.BLOCKS.getEntries().stream()
             .map(holder -> (Block) holder.get())
-            .toList();
+            .forEach(allBlocks::add);
+
+        // 添加 BuildingBlockRegistry 中的方块
+        BuildingBlockRegistry.getAllBlocks().values().stream()
+            .map(holder -> (Block) holder.get())
+            .forEach(allBlocks::add);
+
+        return allBlocks;
     }
 }

@@ -1,13 +1,18 @@
 package com.jasoncian.millenaire_rewrite;
 
+import com.jasoncian.millenaire_rewrite.client.gui.FirePitScreen;
+import com.jasoncian.millenaire_rewrite.client.gui.ImportTableScreen;
+import com.jasoncian.millenaire_rewrite.client.gui.LockedChestScreen;
 import com.jasoncian.millenaire_rewrite.core.ModBlocks;
 import com.jasoncian.millenaire_rewrite.core.ModItems;
 import com.jasoncian.millenaire_rewrite.core.ModBlockItems;
 import com.jasoncian.millenaire_rewrite.core.ModEntities;
 import com.jasoncian.millenaire_rewrite.core.ModBlockEntities;
+import com.jasoncian.millenaire_rewrite.core.ModMenuTypes;
 import com.jasoncian.millenaire_rewrite.core.ModToolMaterials;
 import com.jasoncian.millenaire_rewrite.core.MillCreativeTabs;
 import com.jasoncian.millenaire_rewrite.config.MillenaireConfig;
+import com.jasoncian.millenaire_rewrite.menu.FirePitMenu;
 import com.mojang.logging.LogUtils;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.common.NeoForge;
@@ -19,6 +24,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
 /**
@@ -55,6 +61,7 @@ public class MillenaireRewrite {
         // ModBlockItems.register(modEventBus);
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
         MillCreativeTabs.register(modEventBus);
 
         // Register event listeners
@@ -106,6 +113,16 @@ public class MillenaireRewrite {
             });
 
             LOGGER.info("Millenaire Rewrite client setup completed!");
+        }
+
+        @SubscribeEvent
+        public static void registerScreens(RegisterMenuScreensEvent event) {
+            // 注册火坑GUI屏幕
+            event.register(ModMenuTypes.FIRE_PIT.get(), FirePitScreen::new);
+            // 注册锁定箱子GUI屏幕
+            event.register(ModMenuTypes.LOCKED_CHEST.get(), LockedChestScreen::new);
+            // 注册导入桌GUI屏幕
+            event.register(ModMenuTypes.IMPORT_TABLE.get(), ImportTableScreen::new);
         }
     }
 }

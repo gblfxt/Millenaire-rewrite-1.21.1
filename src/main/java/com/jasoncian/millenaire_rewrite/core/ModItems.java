@@ -851,8 +851,18 @@ public class ModItems {
             () -> new Item(new Item.Properties().stacksTo(16)));
 
     // ================ Block Items ================
-    // 注意：方块物品现在在ModBlockItems中单独注册
-    // 这样可以更好地处理装饰方块的各个变体
+
+    /** 火坑方块物品 */
+    public static final DeferredHolder<Item, BlockItem> FIRE_PIT = ITEMS.register("fire_pit",
+            () -> new BlockItem(ModBlocks.FIRE_PIT.get(), new Item.Properties()));
+
+    /** 锁定箱子方块物品 */
+    public static final DeferredHolder<Item, BlockItem> LOCKED_CHEST = ITEMS.register("locked_chest",
+            () -> new BlockItem(ModBlocks.LOCKED_CHEST.get(), new Item.Properties()));
+
+    /** 导入桌方块物品 */
+    public static final DeferredHolder<Item, BlockItem> IMPORT_TABLE = ITEMS.register("import_table",
+            () -> new BlockItem(ModBlocks.IMPORT_TABLE.get(), new Item.Properties()));
 
     /**
      * 注册所有物品到模组事件总线

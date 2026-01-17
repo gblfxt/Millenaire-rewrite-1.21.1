@@ -1,0 +1,54 @@
+package com.jasoncian.millenaire_rewrite.core;
+
+import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
+import com.jasoncian.millenaire_rewrite.menu.FirePitMenu;
+import com.jasoncian.millenaire_rewrite.menu.ImportTableMenu;
+import com.jasoncian.millenaire_rewrite.menu.LockedChestMenu;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.inventory.MenuType;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+/**
+ * 模组菜单类型注册器
+ *
+ * 负责注册所有Millenaire mod的菜单类型
+ * 用于GUI容器系统
+ *
+ * 菜单类型：
+ * - 火坑 (FirePit) - 多槽位烹饪GUI
+ * - 锁定箱子 (LockedChest) - 村庄存储GUI（待实现）
+ * - 交易 (Trading) - 村民交易GUI（待实现）
+ */
+public class ModMenuTypes {
+
+    public static final DeferredRegister<MenuType<?>> MENUS =
+        DeferredRegister.create(BuiltInRegistries.MENU, MillenaireRewrite.MOD_ID);
+
+    // ================ 功能方块菜单 ================
+
+    /** 火坑菜单 */
+    public static final DeferredHolder<MenuType<?>, MenuType<FirePitMenu>> FIRE_PIT =
+        MENUS.register("fire_pit", () -> IMenuTypeExtension.create(FirePitMenu::new));
+
+    /** 锁定箱子菜单 */
+    public static final DeferredHolder<MenuType<?>, MenuType<LockedChestMenu>> LOCKED_CHEST =
+        MENUS.register("locked_chest", () -> IMenuTypeExtension.create(LockedChestMenu::new));
+
+    /** 导入桌菜单 */
+    public static final DeferredHolder<MenuType<?>, MenuType<ImportTableMenu>> IMPORT_TABLE =
+        MENUS.register("import_table", () -> IMenuTypeExtension.create(ImportTableMenu::new));
+
+    // TODO: 添加交易菜单
+
+    /**
+     * 注册所有菜单类型到模组事件总线
+     *
+     * @param eventBus 模组事件总线
+     */
+    public static void register(IEventBus eventBus) {
+        MENUS.register(eventBus);
+    }
+}

@@ -244,8 +244,84 @@ public enum BasicBuildingMaterial {
     /** 雪砖 */
     SNOW_BRICKS(
         "snow_bricks",
-        "雪砖", 
+        "雪砖",
         BuildingMaterial.SNOW_BRICK
+    ),
+
+    // ================ OldSource 装饰材料 (BlockDecorativeStone) ================
+
+    /** 拜占庭红马赛克 - 拜占庭文化装饰 */
+    BYZANTINE_MOSAIC_RED(
+        "byzantine_mosaic_red",
+        "拜占庭红马赛克",
+        BuildingMaterial.BYZANTINE_MOSAIC
+    ),
+
+    /** 拜占庭蓝马赛克 - 拜占庭文化装饰 */
+    BYZANTINE_MOSAIC_BLUE(
+        "byzantine_mosaic_blue",
+        "拜占庭蓝马赛克",
+        BuildingMaterial.BYZANTINE_MOSAIC
+    ),
+
+    /** 浅蓝砖 - 装饰性砖块 */
+    LIGHT_BLUE_BRICK(
+        "light_blue_brick",
+        "浅蓝砖",
+        BuildingMaterial.LIGHT_BLUE_BRICK
+    ),
+
+    /** 雕刻浅蓝砖 - 装饰性雕刻砖块 */
+    CHISELED_LIGHT_BLUE_BRICK(
+        "chiseled_light_blue_brick",
+        "雕刻浅蓝砖",
+        BuildingMaterial.LIGHT_BLUE_BRICK
+    ),
+
+    /** 玛雅金块 - 玛雅文化装饰 */
+    MAYAN_GOLD_BLOCK(
+        "mayan_gold_block",
+        "玛雅金块",
+        BuildingMaterial.MAYAN_GOLD
+    ),
+
+    // ================ OldSource 装饰材料 (BlockDecorativeWood) ================
+
+    /** 蜂蜜方块 - 装饰方块 */
+    HONEY_BLOCK(
+        "honey_block",
+        "蜂蜜方块",
+        BuildingMaterial.HONEY
+    ),
+
+    // ================ 路径方块 ================
+
+    /** 石质路径 - 诺曼/基础路径 */
+    STONE_PATH(
+        "stone_path",
+        "石质路径",
+        BuildingMaterial.PATH
+    ),
+
+    /** 砂岩路径 - 沙漠地区路径 */
+    SANDSTONE_PATH(
+        "sandstone_path",
+        "砂岩路径",
+        BuildingMaterial.PATH
+    ),
+
+    /** 砾石路径 - 基础路径 */
+    GRAVEL_PATH(
+        "gravel_path",
+        "砾石路径",
+        BuildingMaterial.PATH
+    ),
+
+    /** 木质路径 - 日本文化路径 */
+    WOODEN_PATH(
+        "wooden_path",
+        "木质路径",
+        BuildingMaterial.PATH
     );
     
     // ================ 属性字段 ================
@@ -385,6 +461,63 @@ public enum BasicBuildingMaterial {
     public static BasicBuildingMaterial[] getEarthDecorativeMaterials() {
         return new BasicBuildingMaterial[] {
             EARTH_WALL, MUD_BRICKS, DRIED_BRICKS
+        };
+    }
+
+    /**
+     * 获取拜占庭特有材料
+     *
+     * @return 拜占庭材料数组
+     */
+    public static BasicBuildingMaterial[] getByzantineMaterials() {
+        return new BasicBuildingMaterial[] {
+            BYZANTINE_TILES, BYZANTINE_MOSAIC_RED, BYZANTINE_MOSAIC_BLUE, GOLD_ORNAMENT
+        };
+    }
+
+    /**
+     * 获取玛雅特有材料
+     *
+     * @return 玛雅材料数组
+     */
+    public static BasicBuildingMaterial[] getMayanMaterials() {
+        return new BasicBuildingMaterial[] {
+            MAYAN_GOLD_BLOCK, GALIANITE_BLOCK
+        };
+    }
+
+    /**
+     * 获取浅蓝砖材料
+     *
+     * @return 浅蓝砖材料数组
+     */
+    public static BasicBuildingMaterial[] getLightBlueBrickMaterials() {
+        return new BasicBuildingMaterial[] {
+            LIGHT_BLUE_BRICK, CHISELED_LIGHT_BLUE_BRICK
+        };
+    }
+
+    /**
+     * 获取所有路径材料
+     *
+     * @return 路径材料数组
+     */
+    public static BasicBuildingMaterial[] getPathMaterials() {
+        return new BasicBuildingMaterial[] {
+            STONE_PATH, SANDSTONE_PATH, GRAVEL_PATH, WOODEN_PATH
+        };
+    }
+
+    /**
+     * 获取所有OldSource装饰石材
+     *
+     * @return OldSource装饰石材数组
+     */
+    public static BasicBuildingMaterial[] getOldSourceDecorativeStone() {
+        return new BasicBuildingMaterial[] {
+            MUD_BRICKS, COOKED_BRICKS, MAYAN_GOLD_BLOCK,
+            BYZANTINE_MOSAIC_RED, BYZANTINE_MOSAIC_BLUE,
+            LIGHT_BLUE_BRICK, CHISELED_LIGHT_BLUE_BRICK
         };
     }
 }

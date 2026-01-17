@@ -1,9 +1,21 @@
 package com.jasoncian.millenaire_rewrite.core;
 
 import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
+import com.jasoncian.millenaire_rewrite.blocks.agriculture.FruitLeavesBlock;
+import com.jasoncian.millenaire_rewrite.blocks.agriculture.GrapeVineBlock;
+import com.jasoncian.millenaire_rewrite.blocks.agriculture.MillCropBlock;
+import com.jasoncian.millenaire_rewrite.blocks.agriculture.SilkWormBlock;
+import com.jasoncian.millenaire_rewrite.blocks.functional.FirePitBlock;
+import com.jasoncian.millenaire_rewrite.blocks.functional.ImportTableBlock;
+import com.jasoncian.millenaire_rewrite.blocks.functional.LockedChestBlock;
 import com.jasoncian.millenaire_rewrite.blocks.system.BuildingBlockRegistry;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.core.registries.BuiltInRegistries;
 
@@ -36,8 +48,150 @@ public class ModBlocks {
 
     // ================ 核心功能方块 ================
 
-    // TODO: 添加真正需要的功能性方块（基于 legacy 代码）
-    // 例如：Mill Chest, Import Table 等
+    /** 火坑方块 - 多槽位烹饪 */
+    public static final DeferredHolder<Block, FirePitBlock> FIRE_PIT =
+        BLOCKS.register("fire_pit", () -> new FirePitBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.WOOD)
+                .strength(0.2F)
+                .sound(SoundType.WOOD)
+                .noOcclusion()
+        ));
+
+    /** 锁定箱子方块 - 村庄存储 */
+    public static final DeferredHolder<Block, LockedChestBlock> LOCKED_CHEST =
+        BLOCKS.register("locked_chest", () -> new LockedChestBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.WOOD)
+                .strength(2.5F)
+                .sound(SoundType.WOOD)
+                .noOcclusion()
+        ));
+
+    /** 导入桌方块 - 建筑模板导入导出 */
+    public static final DeferredHolder<Block, ImportTableBlock> IMPORT_TABLE =
+        BLOCKS.register("import_table", () -> new ImportTableBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.WOOD)
+                .strength(1.0F)
+                .sound(SoundType.WOOD)
+        ));
+
+    // ================ 农业方块 ================
+
+    /** 稻米作物 - 需要灌溉 */
+    public static final DeferredHolder<Block, MillCropBlock> CROP_RICE =
+        BLOCKS.register("crop_rice", () -> new MillCropBlock(
+            cropProperties(),
+            () -> ModItems.RICE.get(),
+            true, false));
+
+    /** 姜黄作物 - 印度文化 */
+    public static final DeferredHolder<Block, MillCropBlock> CROP_TURMERIC =
+        BLOCKS.register("crop_turmeric", () -> new MillCropBlock(
+            cropProperties(),
+            () -> ModItems.TURMERIC.get(),
+            false, false));
+
+    /** 玉米作物 - 玛雅文化，慢速生长 */
+    public static final DeferredHolder<Block, MillCropBlock> CROP_MAIZE =
+        BLOCKS.register("crop_maize", () -> new MillCropBlock(
+            cropProperties(),
+            () -> ModItems.MAIZE.get(),
+            false, true));
+
+    /** 棉花作物 - 塞尔柱文化，需要灌溉 */
+    public static final DeferredHolder<Block, MillCropBlock> CROP_COTTON =
+        BLOCKS.register("crop_cotton", () -> new MillCropBlock(
+            cropProperties(),
+            () -> ModItems.COTTON.get(),
+            true, false));
+
+    /** 葡萄藤 - 拜占庭文化，双层高度 */
+    public static final DeferredHolder<Block, GrapeVineBlock> CROP_VINE =
+        BLOCKS.register("crop_vine", () -> new GrapeVineBlock(
+            cropProperties(),
+            () -> ModItems.GRAPES.get(),
+            () -> ModItems.GRAPES.get()));
+
+    /** 蚕室方块 - 日本文化，丝绸生产 */
+    public static final DeferredHolder<Block, SilkWormBlock> SILKWORM =
+        BLOCKS.register("silkworm", () -> new SilkWormBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.WOOD)
+                .strength(2.0F, 5.0F)
+                .sound(SoundType.WOOD)
+                .noOcclusion(),
+            () -> ModItems.SILK.get()));
+
+    /** 苹果树叶 - 诺曼文化 */
+    public static final DeferredHolder<Block, FruitLeavesBlock> LEAVES_APPLETREE =
+        BLOCKS.register("leaves_appletree", () -> new FruitLeavesBlock(
+            fruitLeavesProperties(),
+            () -> ModItems.CIDER_APPLE.get(),
+            () -> net.minecraft.world.item.Items.OAK_SAPLING));
+
+    /** 橄榄树叶 - 拜占庭文化 */
+    public static final DeferredHolder<Block, FruitLeavesBlock> LEAVES_OLIVETREE =
+        BLOCKS.register("leaves_olivetree", () -> new FruitLeavesBlock(
+            fruitLeavesProperties(),
+            () -> ModItems.OLIVES.get(),
+            () -> net.minecraft.world.item.Items.OAK_SAPLING));
+
+    /** 开心果树叶 - 塞尔柱文化 */
+    public static final DeferredHolder<Block, FruitLeavesBlock> LEAVES_PISTACHIO =
+        BLOCKS.register("leaves_pistachio", () -> new FruitLeavesBlock(
+            fruitLeavesProperties(),
+            () -> ModItems.PISTACHIOS.get(),
+            () -> net.minecraft.world.item.Items.OAK_SAPLING));
+
+    /** 樱桃树叶 - 日本文化 */
+    public static final DeferredHolder<Block, FruitLeavesBlock> CHERRY_LEAVES =
+        BLOCKS.register("cherry_leaves", () -> new FruitLeavesBlock(
+            fruitLeavesProperties(),
+            () -> ModItems.CHERRIES.get(),
+            () -> net.minecraft.world.item.Items.CHERRY_SAPLING));
+
+    /** 樱花树叶 - 日本文化 */
+    public static final DeferredHolder<Block, FruitLeavesBlock> SAKURA_LEAVES =
+        BLOCKS.register("sakura_leaves", () -> new FruitLeavesBlock(
+            fruitLeavesProperties(),
+            () -> ModItems.CHERRY_BLOSSOM.get(),
+            () -> net.minecraft.world.item.Items.CHERRY_SAPLING));
+
+    // ================ 方块属性辅助方法 ================
+
+    /**
+     * 作物方块属性
+     */
+    private static BlockBehaviour.Properties cropProperties() {
+        return BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
+            .noCollission()
+            .randomTicks()
+            .instabreak()
+            .sound(SoundType.CROP)
+            .pushReaction(net.minecraft.world.level.material.PushReaction.DESTROY);
+    }
+
+    /**
+     * 水果树叶属性
+     */
+    private static BlockBehaviour.Properties fruitLeavesProperties() {
+        return BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
+            .strength(0.2F)
+            .randomTicks()
+            .sound(SoundType.GRASS)
+            .noOcclusion()
+            .isValidSpawn((state, level, pos, type) -> type == net.minecraft.world.entity.EntityType.OCELOT ||
+                type == net.minecraft.world.entity.EntityType.PARROT)
+            .isSuffocating((state, level, pos) -> false)
+            .isViewBlocking((state, level, pos) -> false)
+            .ignitedByLava()
+            .pushReaction(net.minecraft.world.level.material.PushReaction.DESTROY)
+            .isRedstoneConductor((state, level, pos) -> false);
+    }
 
     // ================ 统一建筑方块系统（已整合装饰方块） ================
 

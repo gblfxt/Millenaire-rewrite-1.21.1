@@ -169,6 +169,48 @@ public enum BuildingMaterial {
         MapColor.DIRT,
         false,
         PushReaction.NORMAL
+    ),
+
+    // ================ OldSource 装饰材料 ================
+
+    /** 拜占庭马赛克材料 - 适用于拜占庭装饰方块 */
+    BYZANTINE_MOSAIC(
+        1.5f,
+        6.0f,
+        SoundType.STONE,
+        MapColor.COLOR_RED,
+        true,
+        PushReaction.NORMAL
+    ),
+
+    /** 浅蓝砖材料 - 适用于浅蓝色装饰砖块 */
+    LIGHT_BLUE_BRICK(
+        1.5f,
+        6.0f,
+        SoundType.STONE,
+        MapColor.COLOR_LIGHT_BLUE,
+        true,
+        PushReaction.NORMAL
+    ),
+
+    /** 玛雅金块材料 - 适用于玛雅金装饰方块 */
+    MAYAN_GOLD(
+        3.0f,
+        9.0f,
+        SoundType.METAL,
+        MapColor.GOLD,
+        true,
+        PushReaction.NORMAL
+    ),
+
+    /** 蜂蜜方块材料 - 适用于蜂蜜装饰方块 */
+    HONEY(
+        0.0f,
+        0.0f,
+        SoundType.HONEY_BLOCK,
+        MapColor.COLOR_ORANGE,
+        false,
+        PushReaction.NORMAL
     );
     
     // ================ 属性字段 ================
