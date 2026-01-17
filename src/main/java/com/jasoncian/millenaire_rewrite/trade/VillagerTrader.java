@@ -3,8 +3,13 @@ package com.jasoncian.millenaire_rewrite.trade;
 import com.jasoncian.millenaire_rewrite.entity.MillVillager;
 import com.jasoncian.millenaire_rewrite.entity.culture.Culture;
 import com.jasoncian.millenaire_rewrite.entity.villager.VillagerProfession;
+import com.jasoncian.millenaire_rewrite.reputation.ReputationEvents;
+import com.jasoncian.millenaire_rewrite.reputation.ReputationLevel;
+import com.jasoncian.millenaire_rewrite.reputation.ReputationManager;
 import com.jasoncian.millenaire_rewrite.village.Village;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
@@ -79,6 +84,49 @@ public class VillagerTrader {
     }
 
     /**
+     * 获取玩家的声望调整后价格
+     */
+    public int getAdjustedPrice(TradeOffer offer, Player player) {
+        int basePrice = offer.getPriceInDeniers();
+        Village village = villager.getHomeVillage();
+
+        if (village == null || !(villager.level() instanceof ServerLevel level)) {
+            return basePrice;
+        }
+
+        ReputationManager repManager = ReputationManager.get(level);
+        return repManager.getAdjustedPrice(player, village, basePrice);
+    }
+
+    /**
+     * 检查玩家是否可以与此村民交易
+     */
+    public boolean canPlayerTrade(Player player) {
+        Village village = villager.getHomeVillage();
+
+        if (village == null || !(villager.level() instanceof ServerLevel level)) {
+            return true; // 默认允许
+        }
+
+        ReputationManager repManager = ReputationManager.get(level);
+        return repManager.canTrade(player, village);
+    }
+
+    /**
+     * 获取玩家与此村民村庄的声望等级
+     */
+    public ReputationLevel getPlayerReputationLevel(Player player) {
+        Village village = villager.getHomeVillage();
+
+        if (village == null || !(villager.level() instanceof ServerLevel level)) {
+            return ReputationLevel.STRANGER;
+        }
+
+        ReputationManager repManager = ReputationManager.get(level);
+        return repManager.getReputationLevel(player, village);
+    }
+
+    /**
      * 刷新交易列表
      */
     public void refreshTrades() {
@@ -125,7 +173,13 @@ public class VillagerTrader {
             return false;
         }
 
-        int price = offer.getPriceInDeniers();
+        // 检查声望是否允许交易
+        if (!canPlayerTrade(player)) {
+            return false;
+        }
+
+        // 获取声望调整后的价格
+        int price = getAdjustedPrice(offer, player);
 
         // 检查玩家货币
         if (!hasEnoughMoney(player, price)) {
@@ -149,6 +203,11 @@ public class VillagerTrader {
             Village village = villager.getHomeVillage();
             if (village != null) {
                 village.addDeniers(price);
+
+                // 增加声望
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ReputationEvents.onTradeComplete(serverPlayer, village);
+                }
             }
 
             return true;
