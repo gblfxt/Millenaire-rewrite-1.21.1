@@ -32,6 +32,9 @@ public enum VillagerAnimationState {
     /** 耕作状态 - 使用锄头 */
     FARMING("farming"),
 
+    /** 建造状态 - 放置方块 */
+    BUILDING("building"),
+
     /** 攻击状态 - 战斗挥动 */
     ATTACKING("attacking"),
 
@@ -67,7 +70,7 @@ public enum VillagerAnimationState {
      * 检查是否为工作类动画
      */
     public boolean isWorkAnimation() {
-        return this == WORKING || this == MINING || this == CHOPPING || this == FARMING;
+        return this == WORKING || this == MINING || this == CHOPPING || this == FARMING || this == BUILDING;
     }
 
     /**

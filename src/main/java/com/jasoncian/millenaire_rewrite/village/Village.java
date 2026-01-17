@@ -1,6 +1,7 @@
 package com.jasoncian.millenaire_rewrite.village;
 
 import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
+import com.jasoncian.millenaire_rewrite.building.BuildingConstructionManager;
 import com.jasoncian.millenaire_rewrite.entity.MillVillager;
 import com.jasoncian.millenaire_rewrite.entity.culture.Culture;
 import com.jasoncian.millenaire_rewrite.item.InvItem;
@@ -87,6 +88,12 @@ public class Village {
     /** 村民生成器 */
     private transient VillagerSpawner villagerSpawner;
 
+    /** 建筑建造管理器 */
+    private transient BuildingConstructionManager constructionManager;
+
+    /** 所在世界引用 */
+    private transient ServerLevel level;
+
     // ================ 状态标志 ================
 
     /** 是否已加载 */
@@ -104,6 +111,7 @@ public class Village {
         this.name = generateVillageName(culture);
         this.createdTime = System.currentTimeMillis();
         this.villagerSpawner = new VillagerSpawner(this);
+        this.constructionManager = new BuildingConstructionManager(this);
     }
 
     /**
@@ -112,6 +120,7 @@ public class Village {
     public Village(UUID id) {
         this.villageId = id;
         this.villagerSpawner = new VillagerSpawner(this);
+        this.constructionManager = new BuildingConstructionManager(this);
     }
 
     // ================ 名称生成 ================
@@ -386,6 +395,9 @@ public class Village {
      * 由VillageManager调用
      */
     public void tick(ServerLevel level) {
+        // 保存世界引用
+        this.level = level;
+
         // 清理无效的村民引用
         activeVillagers.removeIf(v -> v.isRemoved() || !v.isAlive());
 
@@ -394,7 +406,11 @@ public class Village {
             villagerSpawner.tick(level);
         }
 
-        // TODO: 更新建造进度
+        // 更新建筑建造
+        if (constructionManager != null) {
+            constructionManager.tick(level);
+        }
+
         // TODO: 更新村庄经济
         // TODO: 触发村庄事件
     }
@@ -409,6 +425,85 @@ public class Village {
             villagerSpawner = new VillagerSpawner(this);
         }
         return villagerSpawner;
+    }
+
+    /**
+     * 获取建筑建造管理器
+     */
+    public BuildingConstructionManager getConstructionManager() {
+        if (constructionManager == null) {
+            constructionManager = new BuildingConstructionManager(this);
+        }
+        return constructionManager;
+    }
+
+    /**
+     * 获取村庄所在世界
+     */
+    @Nullable
+    public ServerLevel getServerLevel() {
+        return level;
+    }
+
+    /**
+     * 获取村庄等级（基于建筑数量和类型）
+     * Used by BuildingRegistry to determine available buildings
+     */
+    public int getLevel() {
+        int buildingCount = buildings.size();
+
+        // 基于建筑数量计算等级
+        if (buildingCount >= 20) return 5;
+        if (buildingCount >= 15) return 4;
+        if (buildingCount >= 10) return 3;
+        if (buildingCount >= 5) return 2;
+        return 1;
+    }
+
+    /**
+     * 获取村庄半径
+     */
+    public int getRadius() {
+        return getVillageRadius();
+    }
+
+    /**
+     * 获取村庄中心位置
+     */
+    public BlockPos getCenterPos() {
+        return townHallPos;
+    }
+
+    /**
+     * 获取所有建筑（别名方法）
+     */
+    public Collection<BuildingLocation> getBuildings() {
+        return getAllBuildings();
+    }
+
+    /**
+     * 检查村庄是否已有某类型建筑
+     */
+    public boolean hasBuildingOfType(String blueprintKey) {
+        for (BuildingLocation building : buildings.values()) {
+            if (blueprintKey.equals(building.getPlanKey())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 获取某类型建筑的数量
+     */
+    public int countBuildingsOfType(String blueprintKey) {
+        int count = 0;
+        for (BuildingLocation building : buildings.values()) {
+            if (blueprintKey.equals(building.getPlanKey())) {
+                count++;
+            }
+        }
+        return count;
     }
 
     // ================ NBT序列化 ================
