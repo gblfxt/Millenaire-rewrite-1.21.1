@@ -54,6 +54,12 @@ public class VillagerSpawner {
     /** 生成队列（等待生成的职业） */
     private final Queue<VillagerProfession> spawnQueue = new LinkedList<>();
 
+    /** 是否有初始生成待处理 */
+    private boolean initialSpawnPending = false;
+
+    /** 初始生成数量 */
+    private static final int INITIAL_SPAWN_COUNT = 3;
+
     // ================ 构造函数 ================
 
     public VillagerSpawner(Village village) {
@@ -68,6 +74,14 @@ public class VillagerSpawner {
      */
     public void tick(ServerLevel level) {
         long currentTime = level.getGameTime();
+
+        // 处理初始生成
+        if (initialSpawnPending) {
+            initialSpawnPending = false;
+            forceSpawnMultiple(level, INITIAL_SPAWN_COUNT);
+            lastSpawnTime = currentTime;
+            return;
+        }
 
         // 检查冷却
         if (currentTime - lastSpawnTime < MIN_SPAWN_INTERVAL) {
@@ -406,5 +420,20 @@ public class VillagerSpawner {
      */
     public boolean canSpawnMore() {
         return getCurrentPopulation() < getPopulationCap();
+    }
+
+    /**
+     * 设置初始生成待处理标志
+     * 用于新生成的村庄
+     */
+    public void setInitialSpawnPending(boolean pending) {
+        this.initialSpawnPending = pending;
+    }
+
+    /**
+     * 检查是否有初始生成待处理
+     */
+    public boolean isInitialSpawnPending() {
+        return initialSpawnPending;
     }
 }
