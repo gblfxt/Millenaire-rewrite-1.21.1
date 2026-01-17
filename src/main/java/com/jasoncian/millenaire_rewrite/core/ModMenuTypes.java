@@ -4,6 +4,7 @@ import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 import com.jasoncian.millenaire_rewrite.menu.FirePitMenu;
 import com.jasoncian.millenaire_rewrite.menu.ImportTableMenu;
 import com.jasoncian.millenaire_rewrite.menu.LockedChestMenu;
+import com.jasoncian.millenaire_rewrite.menu.VillagerInteractionMenu;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.bus.api.IEventBus;
@@ -41,7 +42,11 @@ public class ModMenuTypes {
     public static final DeferredHolder<MenuType<?>, MenuType<ImportTableMenu>> IMPORT_TABLE =
         MENUS.register("import_table", () -> IMenuTypeExtension.create(ImportTableMenu::new));
 
-    // TODO: 添加交易菜单
+    // ================ 村民交互菜单 ================
+
+    /** 村民交互菜单 */
+    public static final DeferredHolder<MenuType<?>, MenuType<VillagerInteractionMenu>> VILLAGER_INTERACTION =
+        MENUS.register("villager_interaction", () -> IMenuTypeExtension.create(VillagerInteractionMenu::new));
 
     /**
      * 注册所有菜单类型到模组事件总线

@@ -8,6 +8,8 @@ import com.jasoncian.millenaire_rewrite.blocks.agriculture.SilkWormBlock;
 import com.jasoncian.millenaire_rewrite.blocks.functional.FirePitBlock;
 import com.jasoncian.millenaire_rewrite.blocks.functional.ImportTableBlock;
 import com.jasoncian.millenaire_rewrite.blocks.functional.LockedChestBlock;
+import com.jasoncian.millenaire_rewrite.blocks.functional.TownHallBlock;
+import com.jasoncian.millenaire_rewrite.entity.culture.Culture;
 import com.jasoncian.millenaire_rewrite.blocks.system.BuildingBlockRegistry;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.Block;
@@ -75,6 +77,63 @@ public class ModBlocks {
                 .mapColor(MapColor.WOOD)
                 .strength(1.0F)
                 .sound(SoundType.WOOD)
+        ));
+
+    // ================ 村庄核心方块 ================
+
+    /** 诺曼市政厅 - 诺曼文化村庄中心 */
+    public static final DeferredHolder<Block, TownHallBlock> TOWN_HALL_NORMAN =
+        BLOCKS.register("town_hall_norman", () -> new TownHallBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.STONE)
+                .strength(3.0F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops(),
+            Culture.NORMAN
+        ));
+
+    /** 日本市政厅 */
+    public static final DeferredHolder<Block, TownHallBlock> TOWN_HALL_JAPANESE =
+        BLOCKS.register("town_hall_japanese", () -> new TownHallBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.WOOD)
+                .strength(3.0F, 6.0F)
+                .sound(SoundType.WOOD)
+                .requiresCorrectToolForDrops(),
+            Culture.JAPANESE
+        ));
+
+    /** 印度市政厅 */
+    public static final DeferredHolder<Block, TownHallBlock> TOWN_HALL_INDIAN =
+        BLOCKS.register("town_hall_indian", () -> new TownHallBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_ORANGE)
+                .strength(3.0F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops(),
+            Culture.INDIAN
+        ));
+
+    /** 玛雅市政厅 */
+    public static final DeferredHolder<Block, TownHallBlock> TOWN_HALL_MAYAN =
+        BLOCKS.register("town_hall_mayan", () -> new TownHallBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.STONE)
+                .strength(3.0F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops(),
+            Culture.MAYAN
+        ));
+
+    /** 拜占庭市政厅 */
+    public static final DeferredHolder<Block, TownHallBlock> TOWN_HALL_BYZANTINE =
+        BLOCKS.register("town_hall_byzantine", () -> new TownHallBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.GOLD)
+                .strength(3.0F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops(),
+            Culture.BYZANTINE
         ));
 
     // ================ 农业方块 ================

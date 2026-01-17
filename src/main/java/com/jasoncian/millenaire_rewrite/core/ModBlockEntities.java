@@ -4,6 +4,7 @@ import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 import com.jasoncian.millenaire_rewrite.blockentity.FirePitBlockEntity;
 import com.jasoncian.millenaire_rewrite.blockentity.ImportTableBlockEntity;
 import com.jasoncian.millenaire_rewrite.blockentity.LockedChestBlockEntity;
+import com.jasoncian.millenaire_rewrite.blockentity.TownHallBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -44,6 +45,19 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ImportTableBlockEntity>> IMPORT_TABLE =
         BLOCK_ENTITIES.register("import_table", () -> BlockEntityType.Builder
             .of(ImportTableBlockEntity::new, ModBlocks.IMPORT_TABLE.get())
+            .build(null));
+
+    // ================ 村庄核心方块实体 ================
+
+    /** 市政厅方块实体 - 村庄管理中心 */
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TownHallBlockEntity>> TOWN_HALL =
+        BLOCK_ENTITIES.register("town_hall", () -> BlockEntityType.Builder
+            .of(TownHallBlockEntity::new,
+                ModBlocks.TOWN_HALL_NORMAN.get(),
+                ModBlocks.TOWN_HALL_JAPANESE.get(),
+                ModBlocks.TOWN_HALL_INDIAN.get(),
+                ModBlocks.TOWN_HALL_MAYAN.get(),
+                ModBlocks.TOWN_HALL_BYZANTINE.get())
             .build(null));
 
     /**

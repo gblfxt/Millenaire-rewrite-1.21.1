@@ -6,6 +6,7 @@ import com.jasoncian.millenaire_rewrite.blocks.system.BlockVariantType;
 import com.jasoncian.millenaire_rewrite.blocks.system.BuildingBlockRegistry;
 import com.jasoncian.millenaire_rewrite.blocks.system.CulturalBlockFamily;
 import com.jasoncian.millenaire_rewrite.core.ModItems;
+import com.jasoncian.millenaire_rewrite.core.ModEntities;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
@@ -355,6 +356,25 @@ public class ModLanguageProvider extends LanguageProvider {
         add("message.millenaire_rewrite.import_table.import_not_implemented", "Import not yet implemented");
         add("message.millenaire_rewrite.import_table.export_not_implemented", "Export not yet implemented");
         add("message.millenaire_rewrite.import_table.invalid_dimensions", "Invalid dimensions!");
+
+        // ================ Villager Interaction GUI ================
+        add("gui.millenaire_rewrite.villager_interaction", "Villager Interaction");
+        add("gui.millenaire_rewrite.trade", "Trade");
+        add("gui.millenaire_rewrite.hire", "Hire");
+        add("gui.millenaire_rewrite.close", "Close");
+        add("gui.millenaire_rewrite.culture", "Culture");
+        add("gui.millenaire_rewrite.profession", "Profession");
+        add("gui.millenaire_rewrite.gender", "Gender");
+        add("gui.millenaire_rewrite.male", "Male");
+        add("gui.millenaire_rewrite.female", "Female");
+        add("gui.millenaire_rewrite.status", "Status");
+        add("gui.millenaire_rewrite.hired", "Hired");
+        add("gui.millenaire_rewrite.child", "Child");
+        add("gui.millenaire_rewrite.normal", "Normal");
+
+        // ================ Entities ================
+        add(ModEntities.MILL_VILLAGER.get(), "Millenaire Villager");
+        add(ModItems.MILL_VILLAGER_SPAWN_EGG.get(), "Millenaire Villager Spawn Egg");
 
         // ================ Decorative Items ================
         add(ModItems.TAPESTRY.get(), "Tapestry");
@@ -741,6 +761,25 @@ public class ModLanguageProvider extends LanguageProvider {
         add("message.millenaire_rewrite.import_table.import_not_implemented", "导入功能尚未实现");
         add("message.millenaire_rewrite.import_table.export_not_implemented", "导出功能尚未实现");
         add("message.millenaire_rewrite.import_table.invalid_dimensions", "无效的尺寸！");
+
+        // ================ 村民交互界面 ================
+        add("gui.millenaire_rewrite.villager_interaction", "村民交互");
+        add("gui.millenaire_rewrite.trade", "交易");
+        add("gui.millenaire_rewrite.hire", "雇佣");
+        add("gui.millenaire_rewrite.close", "关闭");
+        add("gui.millenaire_rewrite.culture", "文化");
+        add("gui.millenaire_rewrite.profession", "职业");
+        add("gui.millenaire_rewrite.gender", "性别");
+        add("gui.millenaire_rewrite.male", "男性");
+        add("gui.millenaire_rewrite.female", "女性");
+        add("gui.millenaire_rewrite.status", "状态");
+        add("gui.millenaire_rewrite.hired", "已雇佣");
+        add("gui.millenaire_rewrite.child", "孩童");
+        add("gui.millenaire_rewrite.normal", "正常");
+
+        // ================ 实体 ================
+        add(ModEntities.MILL_VILLAGER.get(), "千年村庄村民");
+        add(ModItems.MILL_VILLAGER_SPAWN_EGG.get(), "千年村庄村民生成蛋");
 
         // ================ 装饰物品 ================
         add(ModItems.TAPESTRY.get(), "挂毯");

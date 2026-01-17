@@ -864,6 +864,17 @@ public class ModItems {
     public static final DeferredHolder<Item, BlockItem> IMPORT_TABLE = ITEMS.register("import_table",
             () -> new BlockItem(ModBlocks.IMPORT_TABLE.get(), new Item.Properties()));
 
+    // ================ Spawn Eggs ================
+
+    /** Millenaire村民生成蛋 */
+    public static final DeferredHolder<Item, net.minecraft.world.item.SpawnEggItem> MILL_VILLAGER_SPAWN_EGG =
+        ITEMS.register("mill_villager_spawn_egg",
+            () -> new net.minecraft.world.item.SpawnEggItem(
+                ModEntities.MILL_VILLAGER.get(),
+                0x8B4513, // 主色：棕色
+                0xF5DEB3, // 次色：小麦色
+                new Item.Properties()));
+
     /**
      * 注册所有物品到模组事件总线
      *
