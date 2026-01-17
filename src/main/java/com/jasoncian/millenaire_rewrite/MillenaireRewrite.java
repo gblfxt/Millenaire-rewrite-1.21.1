@@ -1,5 +1,6 @@
 package com.jasoncian.millenaire_rewrite;
 
+import com.jasoncian.millenaire_rewrite.client.ModKeybindings;
 import com.jasoncian.millenaire_rewrite.client.gui.FirePitScreen;
 import com.jasoncian.millenaire_rewrite.client.gui.ImportTableScreen;
 import com.jasoncian.millenaire_rewrite.client.gui.LockedChestScreen;
@@ -30,6 +31,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import com.jasoncian.millenaire_rewrite.client.renderer.MillVillagerRenderer;
 import org.slf4j.Logger;
@@ -152,6 +154,12 @@ public class MillenaireRewrite {
             // 注册村民渲染器
             event.registerEntityRenderer(ModEntities.MILL_VILLAGER.get(), MillVillagerRenderer::new);
             LOGGER.info("Millenaire Rewrite entity renderers registered!");
+        }
+
+        @SubscribeEvent
+        public static void registerKeybindings(RegisterKeyMappingsEvent event) {
+            // 注册快捷键
+            ModKeybindings.register(event);
         }
     }
 }
