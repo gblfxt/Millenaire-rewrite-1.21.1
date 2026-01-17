@@ -6,9 +6,9 @@ import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 // import com.jasoncian.millenaire_rewrite.blocks.decorative.EarthDecorativeVariant;
 // import com.jasoncian.millenaire_rewrite.items.blocks.DecorativeBlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 /**
  * ⚠️  DEPRECATED - 已弃用的方块物品注册器
@@ -35,7 +35,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Deprecated
 public class ModBlockItems {
 
-    public static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
+    public static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM,
             MillenaireRewrite.MOD_ID);
 
     // ================ 核心功能方块物品 ================

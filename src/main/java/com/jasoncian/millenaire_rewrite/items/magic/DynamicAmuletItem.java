@@ -1,4 +1,5 @@
 package com.jasoncian.millenaire_rewrite.items.magic;
+import com.jasoncian.millenaire_rewrite.util.ItemNBTHelper;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -90,7 +91,7 @@ public class DynamicAmuletItem extends Item {
         int detectionValue = calculateDetectionValue(level, player);
         
         // 将检测值保存到NBT中
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         nbt.putInt("detection_value", detectionValue);
         nbt.putLong("last_update", level.getGameTime());
     }
@@ -183,8 +184,8 @@ public class DynamicAmuletItem extends Item {
     }
     
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        CompoundTag nbt = stack.getTag();
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        CompoundTag nbt = ItemNBTHelper.getTag(stack);
         if (nbt != null) {
             int detectionValue = nbt.getInt("detection_value");
             
@@ -217,7 +218,7 @@ public class DynamicAmuletItem extends Item {
             }
         }
         
-        super.appendHoverText(stack, level, tooltip, flag);
+        super.appendHoverText(stack, context, tooltip, flag);
     }
     
     public AmuletType getAmuletType() {
@@ -229,7 +230,7 @@ public class DynamicAmuletItem extends Item {
         ItemStack stack = player.getItemInHand(hand);
         
         if (!level.isClientSide()) {
-            CompoundTag nbt = stack.getTag();
+            CompoundTag nbt = ItemNBTHelper.getTag(stack);
             int detectionValue = nbt != null ? nbt.getInt("detection_value") : 0;
             
             // 输出调试信息到聊天框
@@ -269,7 +270,9 @@ public class DynamicAmuletItem extends Item {
                         
                         // 对物品造成耐久度损伤（仅对SKOLL_HATI护符）
                         if (amuletType == AmuletType.SKOLL_HATI) {
-                            stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
+                            stack.hurtAndBreak(1, player, hand == InteractionHand.MAIN_HAND ?
+                                net.minecraft.world.entity.EquipmentSlot.MAINHAND :
+                                net.minecraft.world.entity.EquipmentSlot.OFFHAND);
                         }
                         
                         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
@@ -295,7 +298,7 @@ public class DynamicAmuletItem extends Item {
             return 0xFFFFFF;
         }
         
-        CompoundTag nbt = stack.getTag();
+        CompoundTag nbt = ItemNBTHelper.getTag(stack);
         if (nbt == null) {
             return getDefaultColor(amulet.amuletType);
         }

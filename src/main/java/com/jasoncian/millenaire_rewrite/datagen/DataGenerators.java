@@ -3,10 +3,10 @@ package com.jasoncian.millenaire_rewrite.datagen;
 import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 
 /**
  * 数据生成器事件处理器
@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.Mod;
  * @version 0.1.3-alpha
  * @since 1.20.1
  */
-@Mod.EventBusSubscriber(modid = MillenaireRewrite.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = MillenaireRewrite.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
     @SubscribeEvent
@@ -47,7 +47,7 @@ public class DataGenerators {
         // 服务端数据生成器
         if (event.includeServer()) {
             // 方块战利品表生成器
-            generator.addProvider(true, ModLootTableProvider.create(packOutput));
+            generator.addProvider(true, ModLootTableProvider.create(packOutput, event.getLookupProvider()));
         }
 
         // 语言文件数据生成器 - 支持中文和英文

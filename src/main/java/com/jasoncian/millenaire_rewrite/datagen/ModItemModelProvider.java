@@ -5,10 +5,10 @@ import com.jasoncian.millenaire_rewrite.core.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -334,7 +334,7 @@ public class ModItemModelProvider extends ItemModelProvider {
      * 创建简单物品模型
      * 使用标准的generated父模型和对应的材质
      */
-    private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
+    private ItemModelBuilder simpleItem(DeferredHolder<Item, Item> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0",
                         ResourceLocation.fromNamespaceAndPath(MillenaireRewrite.MOD_ID,
@@ -345,7 +345,7 @@ public class ModItemModelProvider extends ItemModelProvider {
      * 创建手持工具模型
      * 使用handheld父模型，适用于剑、斧头、镐子等工具
      */
-    private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
+    private ItemModelBuilder handheldItem(DeferredHolder<Item, Item> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.withDefaultNamespace("item/handheld")).texture("layer0",
                         ResourceLocation.fromNamespaceAndPath(MillenaireRewrite.MOD_ID,
@@ -357,7 +357,7 @@ public class ModItemModelProvider extends ItemModelProvider {
      * 使用bow父模型，适用于弓箭类武器
      * 包含完整的拉弓动画状态配置
      */
-    private ItemModelBuilder bowItem(RegistryObject<Item> item) {
+    private ItemModelBuilder bowItem(DeferredHolder<Item, Item> item) {
         String itemName = item.getId().getPath();
 
         // 先显式创建并保存拉弓状态的子模型
@@ -393,7 +393,7 @@ public class ModItemModelProvider extends ItemModelProvider {
      * 创建羊皮纸物品模型
      * 使用指定的材质文件
      */
-    private ItemModelBuilder parchmentItem(RegistryObject<Item> item, String textureName) {
+    private ItemModelBuilder parchmentItem(DeferredHolder<Item, Item> item, String textureName) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0",
                         ResourceLocation.fromNamespaceAndPath(MillenaireRewrite.MOD_ID, "item/" + textureName));
@@ -403,7 +403,7 @@ public class ModItemModelProvider extends ItemModelProvider {
      * 创建双层纹理物品模型
      * 适用于需要base + overlay的护身符等物品
      */
-    private ItemModelBuilder layeredItem(RegistryObject<Item> item) {
+    private ItemModelBuilder layeredItem(DeferredHolder<Item, Item> item) {
         String itemName = item.getId().getPath();
         return withExistingParent(itemName,
                 ResourceLocation.withDefaultNamespace("item/generated"))

@@ -6,9 +6,9 @@ import com.jasoncian.millenaire_rewrite.blocks.base.BaseBuildingSlabBlock;
 import com.jasoncian.millenaire_rewrite.blocks.base.BaseBuildingStairsBlock;
 import com.jasoncian.millenaire_rewrite.blocks.base.BaseBuildingWallBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,10 +32,10 @@ import java.util.Map;
 public class BuildingBlockRegistry {
     
     public static final DeferredRegister<Block> BLOCKS = 
-        DeferredRegister.create(ForgeRegistries.BLOCKS, MillenaireRewrite.MOD_ID);
+        DeferredRegister.create(BuiltInRegistries.BLOCK, MillenaireRewrite.MOD_ID);
     
     // 存储所有注册的方块，按文化和材料分类
-    private static final Map<String, RegistryObject<Block>> REGISTERED_BLOCKS = new HashMap<>();
+    private static final Map<String, DeferredHolder<Block, Block>> REGISTERED_BLOCKS = new HashMap<>();
     
     // ================ 注册管理方法 ================
     
@@ -47,25 +47,25 @@ public class BuildingBlockRegistry {
      * @param culture 文化系列
      * @return 注册的方块映射表
      */
-    public static Map<BlockVariantType, RegistryObject<Block>> registerBlockFamily(
+    public static Map<BlockVariantType, DeferredHolder<Block, Block>> registerBlockFamily(
             BasicBuildingMaterial material, CulturalBlockFamily culture) {
         
-        Map<BlockVariantType, RegistryObject<Block>> family = new HashMap<>();
+        Map<BlockVariantType, DeferredHolder<Block, Block>> family = new HashMap<>();
         
         // 注册基础方块
-        RegistryObject<Block> baseBlock = registerBlock(material, culture, BlockVariantType.BLOCK);
+        DeferredHolder<Block, Block> baseBlock = registerBlock(material, culture, BlockVariantType.BLOCK);
         family.put(BlockVariantType.BLOCK, baseBlock);
         
         // 注册楼梯方块
-        RegistryObject<Block> stairsBlock = registerStairs(material, culture, baseBlock);
+        DeferredHolder<Block, Block> stairsBlock = registerStairs(material, culture, baseBlock);
         family.put(BlockVariantType.STAIRS, stairsBlock);
         
         // 注册台阶方块
-        RegistryObject<Block> slabBlock = registerSlab(material, culture);
+        DeferredHolder<Block, Block> slabBlock = registerSlab(material, culture);
         family.put(BlockVariantType.SLAB, slabBlock);
         
         // 注册墙方块
-        RegistryObject<Block> wallBlock = registerWall(material, culture);
+        DeferredHolder<Block, Block> wallBlock = registerWall(material, culture);
         family.put(BlockVariantType.WALL, wallBlock);
         
         return family;
@@ -79,12 +79,12 @@ public class BuildingBlockRegistry {
      * @param variant 方块变体
      * @return 注册的方块
      */
-    public static RegistryObject<Block> registerBlock(
+    public static DeferredHolder<Block, Block> registerBlock(
             BasicBuildingMaterial material, CulturalBlockFamily culture, BlockVariantType variant) {
         
         String registryName = material.generateBlockRegistryName(culture, variant);
         
-        RegistryObject<Block> block = BLOCKS.register(registryName, 
+        DeferredHolder<Block, Block> block = BLOCKS.register(registryName, 
             () -> new BaseBuildingBlock(material, culture, variant));
         
         REGISTERED_BLOCKS.put(registryName, block);
@@ -99,12 +99,12 @@ public class BuildingBlockRegistry {
      * @param baseBlock 基础方块引用
      * @return 注册的楼梯方块
      */
-    public static RegistryObject<Block> registerStairs(
-            BasicBuildingMaterial material, CulturalBlockFamily culture, RegistryObject<Block> baseBlock) {
+    public static DeferredHolder<Block, Block> registerStairs(
+            BasicBuildingMaterial material, CulturalBlockFamily culture, DeferredHolder<Block, Block> baseBlock) {
         
         String registryName = material.generateBlockRegistryName(culture, BlockVariantType.STAIRS);
         
-        RegistryObject<Block> stairs = BLOCKS.register(registryName,
+        DeferredHolder<Block, Block> stairs = BLOCKS.register(registryName,
             () -> new BaseBuildingStairsBlock(
                 () -> baseBlock.get().defaultBlockState(),
                 material, 
@@ -122,12 +122,12 @@ public class BuildingBlockRegistry {
      * @param culture 文化系列
      * @return 注册的台阶方块
      */
-    public static RegistryObject<Block> registerSlab(
+    public static DeferredHolder<Block, Block> registerSlab(
             BasicBuildingMaterial material, CulturalBlockFamily culture) {
         
         String registryName = material.generateBlockRegistryName(culture, BlockVariantType.SLAB);
         
-        RegistryObject<Block> slab = BLOCKS.register(registryName,
+        DeferredHolder<Block, Block> slab = BLOCKS.register(registryName,
             () -> new BaseBuildingSlabBlock(material, culture));
         
         REGISTERED_BLOCKS.put(registryName, slab);
@@ -141,12 +141,12 @@ public class BuildingBlockRegistry {
      * @param culture 文化系列
      * @return 注册的墙方块
      */
-    public static RegistryObject<Block> registerWall(
+    public static DeferredHolder<Block, Block> registerWall(
             BasicBuildingMaterial material, CulturalBlockFamily culture) {
         
         String registryName = material.generateBlockRegistryName(culture, BlockVariantType.WALL);
         
-        RegistryObject<Block> wall = BLOCKS.register(registryName,
+        DeferredHolder<Block, Block> wall = BLOCKS.register(registryName,
             () -> new BaseBuildingWallBlock(material, culture));
         
         REGISTERED_BLOCKS.put(registryName, wall);
@@ -237,7 +237,7 @@ public class BuildingBlockRegistry {
      * @param registryName 注册名
      * @return 注册的方块，如果不存在则返回null
      */
-    public static RegistryObject<Block> getBlock(String registryName) {
+    public static DeferredHolder<Block, Block> getBlock(String registryName) {
         return REGISTERED_BLOCKS.get(registryName);
     }
     
@@ -249,7 +249,7 @@ public class BuildingBlockRegistry {
      * @param variant 方块变体
      * @return 注册的方块，如果不存在则返回null
      */
-    public static RegistryObject<Block> getBlock(
+    public static DeferredHolder<Block, Block> getBlock(
             BasicBuildingMaterial material, CulturalBlockFamily culture, BlockVariantType variant) {
         
         String registryName = material.generateBlockRegistryName(culture, variant);
@@ -261,7 +261,7 @@ public class BuildingBlockRegistry {
      *
      * @return 所有注册方块的映射表
      */
-    public static Map<String, RegistryObject<Block>> getAllBlocks() {
+    public static Map<String, DeferredHolder<Block, Block>> getAllBlocks() {
         return new HashMap<>(REGISTERED_BLOCKS);
     }
 }

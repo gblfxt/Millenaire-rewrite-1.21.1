@@ -6,9 +6,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import com.jasoncian.millenaire_rewrite.data.ParchmentContentData;
 
 /**
@@ -42,7 +42,7 @@ public class MillCreativeTabs {
     // ================ 方块标签页 ================
 
     /** Millenaire 方块标签页 - 所有建筑和装饰方块 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_BLOCKS = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_BLOCKS = 
         CREATIVE_MODE_TABS.register("blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.blocks"))
             .icon(() -> new ItemStack(ModItems.DENIER.get())) // 临时使用货币作为图标
@@ -76,7 +76,7 @@ public class MillCreativeTabs {
     // - 货币系统：铜钱、银两、黄金等
     //
     // 实现时需要创建：
-    // public static final RegistryObject<CreativeModeTab> MILLENAIRE_HUAXIA = 
+    // public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_HUAXIA = 
     //     CREATIVE_MODE_TABS.register("huaxia", () -> CreativeModeTab.builder()
     //         .title(Component.translatable("creativetab.millenaire_rewrite.huaxia"))
     //         .icon(() -> new ItemStack(ModItems.HUAXIA_JADE_DISK.get())) // 使用玉璧作为图标
@@ -92,7 +92,7 @@ public class MillCreativeTabs {
     // ================ 诺曼文化标签页 ================
 
     /** Millenaire 诺曼文化标签页 - 诺曼/法兰克文化物品 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_NORMAN = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_NORMAN = 
         CREATIVE_MODE_TABS.register("norman", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.norman"))
             .icon(() -> new ItemStack(ModItems.DENIER_OR.get()))
@@ -140,7 +140,7 @@ public class MillCreativeTabs {
     // ================ 拜占庭文化标签页 ================
 
     /** Millenaire 拜占庭文化标签页 - 拜占庭帝国物品 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_BYZANTINE = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_BYZANTINE = 
         CREATIVE_MODE_TABS.register("byzantine", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.byzantine"))
             .icon(() -> new ItemStack(ModItems.MALVASIA_WINE.get()))
@@ -181,7 +181,7 @@ public class MillCreativeTabs {
     // ================ 日本文化标签页 ================
 
     /** Millenaire 日本文化标签页 - 日本武士文化物品 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_JAPANESE = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_JAPANESE = 
         CREATIVE_MODE_TABS.register("japanese", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.japanese"))
             .icon(() -> new ItemStack(ModItems.JAPANESE_SWORD.get()))
@@ -221,7 +221,7 @@ public class MillCreativeTabs {
     // ================ 玛雅文化标签页 ================
 
     /** Millenaire 玛雅文化标签页 - 玛雅文明物品 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_MAYAN = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_MAYAN = 
         CREATIVE_MODE_TABS.register("mayan", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.mayan"))
             .icon(() -> new ItemStack(ModItems.OBSIDIAN_FLAKE.get()))
@@ -256,7 +256,7 @@ public class MillCreativeTabs {
     // ================ 印度文化标签页 ================
 
     /** Millenaire 印度文化标签页 - 印度次大陆文化物品 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_INDIAN = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_INDIAN = 
         CREATIVE_MODE_TABS.register("indian", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.indian"))
             .icon(() -> new ItemStack(ModItems.TURMERIC.get()))
@@ -284,7 +284,7 @@ public class MillCreativeTabs {
     // ================ 因纽特文化标签页 ================
 
     /** Millenaire 因纽特文化标签页 - 北极文化物品 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_INUIT = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_INUIT = 
         CREATIVE_MODE_TABS.register("inuit", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.inuit"))
             .icon(() -> new ItemStack(ModItems.FUR_HELMET.get()))
@@ -321,7 +321,7 @@ public class MillCreativeTabs {
     // ================ 食物标签页 ================
 
     /** Millenaire 食物标签页 - 所有食物物品 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_FOOD = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_FOOD = 
         CREATIVE_MODE_TABS.register("food", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.food"))
             .icon(() -> new ItemStack(ModItems.CIDER_APPLE.get()))
@@ -382,7 +382,7 @@ public class MillCreativeTabs {
     // ================ 杂项标签页 ================
 
     /** Millenaire 杂项标签页 - 工具、材料和其他物品 */
-    public static final RegistryObject<CreativeModeTab> MILLENAIRE_MISC = 
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_MISC = 
         CREATIVE_MODE_TABS.register("misc", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.millenaire_rewrite.misc"))
             .icon(() -> new ItemStack(ModItems.PURSE.get()))

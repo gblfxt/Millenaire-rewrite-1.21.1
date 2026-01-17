@@ -2,9 +2,9 @@ package com.jasoncian.millenaire_rewrite.core;
 
 import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 /**
  * 模组BlockEntity注册器
@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModBlockEntities {
     
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = 
-        DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MillenaireRewrite.MOD_ID);
+        DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MillenaireRewrite.MOD_ID);
 
     // TODO: 添加真正需要的方块实体（基于 legacy 代码研究）
 

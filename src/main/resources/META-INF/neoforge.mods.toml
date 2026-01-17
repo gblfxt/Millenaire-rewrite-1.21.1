@@ -1,0 +1,32 @@
+# Millenaire Rewrite neoforge.mods.toml configuration
+# Contains mod metadata for NeoForge mod loader
+
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+#issueTrackerURL = "https://github.com/gblfxt/Millenaire-rewrite-1.21.1/issues"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+#updateJSONURL = ""
+#displayURL = "https://github.com/gblfxt/Millenaire-rewrite-1.21.1"
+#logoFile = "millenaire_logo.png"
+credits = "Based on Kinniken's original Millenaire mod. Rewritten by JasonCian, ported to 1.21.1 by gblfxt."
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+
+[[dependencies.${mod_id}]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"

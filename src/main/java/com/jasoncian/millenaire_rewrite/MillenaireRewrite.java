@@ -9,67 +9,61 @@ import com.jasoncian.millenaire_rewrite.core.ModToolMaterials;
 import com.jasoncian.millenaire_rewrite.core.MillCreativeTabs;
 import com.jasoncian.millenaire_rewrite.config.MillenaireConfig;
 import com.mojang.logging.LogUtils;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
 /**
- * Millenaire Rewrite - 现代化重制版主类
- * 
- * 功能列表:
- * - 模组初始化和注册管理
- * - 创造模式标签页配置
- * - 模组事件处理
- * - 日志记录管理
- * - 现代化的模组架构设计
- * - 完整的注册系统管理
- * - 客户端和服务端分离
- * - 数据生成系统集成
- * - 配置系统支持
- * 
- * @author JasonCian
- * @version 0.1.3-alpha
- * @since 1.20.1
+ * Millenaire Rewrite - Modern rewrite main class
+ *
+ * Features:
+ * - Mod initialization and registration management
+ * - Creative mode tab configuration
+ * - Mod event handling
+ * - Logging management
+ * - Modern mod architecture design
+ * - Complete registration system management
+ * - Client and server separation
+ * - Data generation system integration
+ * - Configuration system support
+ *
+ * @author JasonCian, gblfxt
+ * @version 0.2.0-alpha
+ * @since 1.21.1
  */
 @Mod(MillenaireRewrite.MOD_ID)
 public class MillenaireRewrite {
 
-    // 模组基本信息
     public static final String MOD_ID = "millenaire_rewrite";
     public static final String MOD_NAME = "Millenaire Rewrite";
-    public static final String VERSION = "0.1.0-alpha";
+    public static final String VERSION = "0.2.0-alpha";
 
-    // 日志记录器
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    @SuppressWarnings("removal") // FMLJavaModLoadingContext.get() 在1.20.1中是正确的用法
-    public MillenaireRewrite() {
-        // 获取mod事件总线
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        // 注册核心组件
+    public MillenaireRewrite(IEventBus modEventBus, ModContainer modContainer) {
+        // Register core components
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
-        // ModBlockItems.register(modEventBus); 注册方块物品
+        // ModBlockItems.register(modEventBus);
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        MillCreativeTabs.register(modEventBus); // 注册创意标签页
+        MillCreativeTabs.register(modEventBus);
 
-        // 注册事件监听器
+        // Register event listeners
         modEventBus.addListener(this::commonSetup);
-        // modEventBus.addListener(this::addCreative); // 暂时注释掉，因为目前不需要向原版标签页添加物品
 
-        // 注册Forge事件总线 - 使用静态方法避免this泄漏
-        MinecraftForge.EVENT_BUS.addListener(MillenaireRewrite::onServerStarting);
+        // Register NeoForge event bus
+        NeoForge.EVENT_BUS.addListener(MillenaireRewrite::onServerStarting);
 
-        // 注册配置（使用现代方式）
+        // Register config
         modEventBus.addListener(MillenaireConfig::onLoad);
         modEventBus.addListener(MillenaireConfig::onReload);
 
@@ -77,52 +71,30 @@ public class MillenaireRewrite {
     }
 
     /**
-     * 通用设置阶段
-     * 在这里进行与客户端/服务器无关的初始化
+     * Common setup phase
      */
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("Millenaire Rewrite common setup starting...");
 
         event.enqueueWork(() -> {
-            // 初始化工具层级排序
+            // Initialize tool tier sorting
             ModToolMaterials.initializeTierSorting();
-
-            // 在这里进行需要主线程的初始化工作
-            // 例如：配置网络数据包、注册生物群系特性等
-
-            // TODO: 华夏文明初始化系统（预留空间）
-            //
-            // 华夏文明初始化包括：
-            // - 华夏村庄类型注册
-            // - 华夏建筑模板加载
-            // - 华夏村民类型配置
-            // - 华夏贸易系统初始化
-            // - 华夏文化语言系统设置
-            // - 华夏特殊事件注册
-            //
-            // 示例代码：
-            // HuaxiaCultureManager.initialize();
-            // HuaxiaVillageRegistry.registerVillageTypes();
-            // HuaxiaBuildingRegistry.loadBuildingTemplates();
-            // HuaxiaTradeSystem.initializeTradeGoods();
         });
 
         LOGGER.info("Millenaire Rewrite common setup completed!");
     }
 
     /**
-     * 服务器启动事件处理 - 静态方法避免this泄漏
+     * Server starting event handler
      */
     public static void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("Millenaire Rewrite server is starting...");
-        // 在这里进行服务器启动时的初始化
-        // 例如：加载村庄数据、初始化全局状态等
     }
 
     /**
-     * 仅客户端的事件处理
+     * Client-only event handling
      */
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
 
         @SubscribeEvent
@@ -130,8 +102,7 @@ public class MillenaireRewrite {
             LOGGER.info("Millenaire Rewrite client setup starting...");
 
             event.enqueueWork(() -> {
-                // 在这里进行客户端特定的初始化
-                // 例如：注册渲染器、键位绑定等
+                // Client-specific initialization
             });
 
             LOGGER.info("Millenaire Rewrite client setup completed!");

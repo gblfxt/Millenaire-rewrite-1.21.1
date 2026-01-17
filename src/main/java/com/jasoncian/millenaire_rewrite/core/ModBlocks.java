@@ -3,9 +3,9 @@ package com.jasoncian.millenaire_rewrite.core;
 import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 import com.jasoncian.millenaire_rewrite.blocks.system.BuildingBlockRegistry;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 /**
  * 方块注册器 - 管理所有Millenaire mod方块的注册
@@ -31,7 +31,7 @@ import net.minecraftforge.registries.ForgeRegistries;
  */
 public class ModBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK,
             MillenaireRewrite.MOD_ID);
 
     // ================ 核心功能方块 ================

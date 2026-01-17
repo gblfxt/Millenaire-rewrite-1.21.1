@@ -140,7 +140,7 @@ public class ParchmentScreen extends Screen {
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         // 渲染背景
-        this.renderBackground(guiGraphics);
+        this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
         
         // 渲染GUI背景
         RenderSystem.setShaderTexture(0, PARCHMENT_GUI);

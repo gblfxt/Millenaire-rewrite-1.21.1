@@ -6,17 +6,17 @@ import com.jasoncian.millenaire_rewrite.items.magic.DynamicAmuletItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 /**
  * 客户端颜色注册和物品属性注册
  * 处理护身符的动态颜色显示和弓的动画属性
  */
-@Mod.EventBusSubscriber(modid = MillenaireRewrite.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = MillenaireRewrite.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientColorHandlers {
 
     @SubscribeEvent
@@ -51,8 +51,8 @@ public class ClientColorHandlers {
                 if (livingEntity == null) {
                     return 0.0F;
                 } else {
-                    return livingEntity.getUseItem() != itemStack ? 0.0F : 
-                        (float)(itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+                    return livingEntity.getUseItem() != itemStack ? 0.0F :
+                        (float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 20.0F;
                 }
             });
 

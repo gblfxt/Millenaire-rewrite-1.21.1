@@ -1,38 +1,38 @@
 package com.jasoncian.millenaire_rewrite.config;
 
 import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
 
 /**
  * Millenaire mod配置管理
  * 
  * 处理所有mod的配置选项，包括村庄生成、村民行为等设置
  */
-@Mod.EventBusSubscriber(modid = MillenaireRewrite.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = MillenaireRewrite.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class MillenaireConfig {
 
     // 配置构建器
-    private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     // === 村庄生成设置 ===
-    public static final ForgeConfigSpec.BooleanValue GENERATE_VILLAGES;
-    public static final ForgeConfigSpec.BooleanValue GENERATE_LONE_BUILDINGS;
-    public static final ForgeConfigSpec.IntValue MIN_VILLAGE_DISTANCE;
-    public static final ForgeConfigSpec.IntValue MIN_LONE_DISTANCE;
-    public static final ForgeConfigSpec.IntValue SPAWN_DISTANCE;
+    public static final ModConfigSpec.BooleanValue GENERATE_VILLAGES;
+    public static final ModConfigSpec.BooleanValue GENERATE_LONE_BUILDINGS;
+    public static final ModConfigSpec.IntValue MIN_VILLAGE_DISTANCE;
+    public static final ModConfigSpec.IntValue MIN_LONE_DISTANCE;
+    public static final ModConfigSpec.IntValue SPAWN_DISTANCE;
 
     // === 村民行为设置 ===
-    public static final ForgeConfigSpec.BooleanValue LEARN_LANGUAGES;
-    public static final ForgeConfigSpec.BooleanValue VILLAGE_ANNOUNCEMENTS;
-    public static final ForgeConfigSpec.BooleanValue BUILD_PATHS;
-    public static final ForgeConfigSpec.IntValue MAX_CHILDREN;
+    public static final ModConfigSpec.BooleanValue LEARN_LANGUAGES;
+    public static final ModConfigSpec.BooleanValue VILLAGE_ANNOUNCEMENTS;
+    public static final ModConfigSpec.BooleanValue BUILD_PATHS;
+    public static final ModConfigSpec.IntValue MAX_CHILDREN;
 
     // === 性能设置 ===
-    public static final ForgeConfigSpec.IntValue LOADED_RADIUS;
-    public static final ForgeConfigSpec.IntValue MIN_BUILDING_DISTANCE;
+    public static final ModConfigSpec.IntValue LOADED_RADIUS;
+    public static final ModConfigSpec.IntValue MIN_BUILDING_DISTANCE;
 
     static {
         BUILDER.comment("Millenaire村庄生成设置")
@@ -96,7 +96,7 @@ public class MillenaireConfig {
     }
 
     // 配置规范
-    public static final ForgeConfigSpec SPEC = BUILDER.build();
+    public static final ModConfigSpec SPEC = BUILDER.build();
 
     /**
      * 配置加载事件处理

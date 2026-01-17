@@ -4,9 +4,9 @@ import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 // import com.jasoncian.millenaire_rewrite.core.ModBlockItems;
 import net.minecraft.data.PackOutput;
 // import net.minecraft.world.item.Item;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-// import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+// import net.neoforged.neoforge.registries.DeferredHolder;
 
 /**
  * 方块物品模型数据生成器
@@ -86,7 +86,7 @@ public class ModBlockItemModelProvider extends ItemModelProvider {
      * @deprecated 装饰方块已迁移至统一方块系统，需要为新系统编写对应的数据生成逻辑
      */
     /*
-    private void decorativeBlockItem(RegistryObject<Item> item, String blockModelName) {
+    private void decorativeBlockItem(DeferredHolder<Item, Item> item, String blockModelName) {
         withExistingParent(item.getId().getPath(),
                 modLoc("block/" + blockModelName));
     }

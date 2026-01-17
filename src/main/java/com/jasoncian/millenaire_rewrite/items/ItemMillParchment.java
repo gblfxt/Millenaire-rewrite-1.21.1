@@ -1,4 +1,5 @@
 package com.jasoncian.millenaire_rewrite.items;
+import com.jasoncian.millenaire_rewrite.util.ItemNBTHelper;
 
 import com.jasoncian.millenaire_rewrite.client.gui.ParchmentScreen;
 import net.minecraft.world.item.Item;
@@ -14,8 +15,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -138,8 +139,8 @@ public class ItemMillParchment extends Item {
      * 物品工具提示
      */
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        super.appendHoverText(stack, level, tooltip, isAdvanced);
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
+        super.appendHoverText(stack, context, tooltip, isAdvanced);
 
         String title = getTitle(stack);
         Culture culture = getCulture(stack);
@@ -177,7 +178,7 @@ public class ItemMillParchment extends Item {
      * 获取标题
      */
     public static String getTitle(ItemStack stack) {
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemNBTHelper.getTag(stack);
         if (tag != null && tag.contains(NBT_TITLE)) {
             String title = tag.getString(NBT_TITLE);
 
@@ -211,7 +212,7 @@ public class ItemMillParchment extends Item {
      * 设置标题
      */
     public static void setTitle(ItemStack stack, String title) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemNBTHelper.getOrCreateTag(stack);
         tag.putString(NBT_TITLE, title);
     }
 
@@ -219,7 +220,7 @@ public class ItemMillParchment extends Item {
      * 获取内容数组
      */
     public static String[] getContents(ItemStack stack) {
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemNBTHelper.getTag(stack);
         if (tag != null && tag.contains(NBT_CONTENTS)) {
             ListTag listTag = tag.getList(NBT_CONTENTS, 8);
             String[] contents = new String[listTag.size()];
@@ -243,7 +244,7 @@ public class ItemMillParchment extends Item {
      * 设置内容数组
      */
     public static void setContents(ItemStack stack, String[] contents) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemNBTHelper.getOrCreateTag(stack);
         ListTag listTag = new ListTag();
         for (String content : contents) {
             listTag.add(StringTag.valueOf(content));
@@ -256,7 +257,7 @@ public class ItemMillParchment extends Item {
      */
     public static Culture getCulture(ItemStack stack) {
         // 首先尝试从NBT获取
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemNBTHelper.getTag(stack);
         if (tag != null && tag.contains(NBT_CULTURE)) {
             return Culture.fromName(tag.getString(NBT_CULTURE));
         }
@@ -277,7 +278,7 @@ public class ItemMillParchment extends Item {
      * 设置文化类型
      */
     public static void setCulture(ItemStack stack, Culture culture) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemNBTHelper.getOrCreateTag(stack);
         tag.putString(NBT_CULTURE, culture.getName());
     }
 
@@ -286,7 +287,7 @@ public class ItemMillParchment extends Item {
      */
     public static ParchmentType getParchmentType(ItemStack stack) {
         // 首先尝试从NBT获取
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemNBTHelper.getTag(stack);
         if (tag != null && tag.contains(NBT_TYPE)) {
             return ParchmentType.fromName(tag.getString(NBT_TYPE));
         }
@@ -307,7 +308,7 @@ public class ItemMillParchment extends Item {
      * 设置羊皮纸类型
      */
     public static void setParchmentType(ItemStack stack, ParchmentType type) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemNBTHelper.getOrCreateTag(stack);
         tag.putString(NBT_TYPE, type.getName());
     }
 

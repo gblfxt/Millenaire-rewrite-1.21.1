@@ -1,4 +1,5 @@
 package com.jasoncian.millenaire_rewrite.items;
+import com.jasoncian.millenaire_rewrite.util.ItemNBTHelper;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -111,7 +112,7 @@ public class ItemMillPurse extends Item {
      * 获取最后使用时间
      */
     private static long getLastUseTime(ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         return nbt.getLong(NBT_LAST_USE_TIME);
     }
     
@@ -119,7 +120,7 @@ public class ItemMillPurse extends Item {
      * 设置最后使用时间
      */
     private static void setLastUseTime(ItemStack stack, long time) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         nbt.putLong(NBT_LAST_USE_TIME, time);
     }
     
@@ -187,8 +188,8 @@ public class ItemMillPurse extends Item {
      * 物品工具提示
      */
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        super.appendHoverText(stack, level, tooltip, isAdvanced);
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
+        super.appendHoverText(stack, context, tooltip, isAdvanced);
         
         int copper = getCopperDeniers(stack);
         int silver = getSilverDeniers(stack);
@@ -218,7 +219,7 @@ public class ItemMillPurse extends Item {
      * 获取铜德尼尔数量
      */
     public static int getCopperDeniers(ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         return nbt.getInt(NBT_COPPER_DENIERS);
     }
     
@@ -226,7 +227,7 @@ public class ItemMillPurse extends Item {
      * 获取银德尼尔数量
      */
     public static int getSilverDeniers(ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         return nbt.getInt(NBT_SILVER_DENIERS);
     }
     
@@ -234,7 +235,7 @@ public class ItemMillPurse extends Item {
      * 获取金德尼尔数量
      */
     public static int getGoldDeniers(ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         return nbt.getInt(NBT_GOLD_DENIERS);
     }
     
@@ -242,7 +243,7 @@ public class ItemMillPurse extends Item {
      * 设置铜德尼尔数量
      */
     public static void setCopperDeniers(ItemStack stack, int amount) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         nbt.putInt(NBT_COPPER_DENIERS, Math.max(0, amount));
     }
     
@@ -250,7 +251,7 @@ public class ItemMillPurse extends Item {
      * 设置银德尼尔数量
      */
     public static void setSilverDeniers(ItemStack stack, int amount) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         nbt.putInt(NBT_SILVER_DENIERS, Math.max(0, amount));
     }
     
@@ -258,7 +259,7 @@ public class ItemMillPurse extends Item {
      * 设置金德尼尔数量
      */
     public static void setGoldDeniers(ItemStack stack, int amount) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         nbt.putInt(NBT_GOLD_DENIERS, Math.max(0, amount));
     }
     

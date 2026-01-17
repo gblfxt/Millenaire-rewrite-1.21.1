@@ -3,11 +3,11 @@ package com.jasoncian.millenaire_rewrite.datagen;
 import com.jasoncian.millenaire_rewrite.MillenaireRewrite;
 // import com.jasoncian.millenaire_rewrite.blocks.decorative.*;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-// import net.minecraftforge.client.model.generators.ConfiguredModel;
-// import net.minecraftforge.client.model.generators.ModelFile;
-// import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+// import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+// import net.neoforged.neoforge.client.model.generators.ModelFile;
+// import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 /**
  * 方块状态数据生成器

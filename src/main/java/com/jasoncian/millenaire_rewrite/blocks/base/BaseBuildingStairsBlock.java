@@ -43,7 +43,7 @@ public class BaseBuildingStairsBlock extends StairBlock {
      * @param culture 文化系列
      */
     public BaseBuildingStairsBlock(Supplier<BlockState> baseBlockState, BasicBuildingMaterial baseMaterial, CulturalBlockFamily culture) {
-        super(baseBlockState, BaseBuildingBlock.createProperties(baseMaterial.getMaterialProperties()));
+        super(baseBlockState.get(), BaseBuildingBlock.createProperties(baseMaterial.getMaterialProperties()));
         this.baseMaterial = baseMaterial;
         this.culture = culture;
         this.blockName = baseMaterial.generateBlockRegistryName(culture, BlockVariantType.STAIRS);

@@ -136,7 +136,7 @@ public class MillWandItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         switch (wandType) {
             case TUNING_FORK:
                 tooltip.add(Component.translatable("item.millenaire_rewrite.tuning_fork.tooltip.1")
@@ -163,8 +163,8 @@ public class MillWandItem extends Item {
                     .withStyle(ChatFormatting.GRAY));
                 break;
         }
-        
-        super.appendHoverText(stack, world, tooltip, flag);
+
+        super.appendHoverText(stack, context, tooltip, flag);
     }
     
     public WandType getWandType() {

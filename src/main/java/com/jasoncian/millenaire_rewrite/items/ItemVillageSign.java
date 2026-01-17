@@ -1,4 +1,5 @@
 package com.jasoncian.millenaire_rewrite.items;
+import com.jasoncian.millenaire_rewrite.util.ItemNBTHelper;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -118,8 +119,8 @@ public class ItemVillageSign extends Item {
      * 物品工具提示
      */
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        super.appendHoverText(stack, level, tooltip, isAdvanced);
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
+        super.appendHoverText(stack, context, tooltip, isAdvanced);
         
         Culture culture = getCulture(stack);
         VillageType villageType = getVillageType(stack);
@@ -157,7 +158,7 @@ public class ItemVillageSign extends Item {
      * 获取村庄类型
      */
     public static VillageType getVillageType(ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         if (nbt.contains(NBT_VILLAGE_TYPE)) {
             try {
                 return VillageType.valueOf(nbt.getString(NBT_VILLAGE_TYPE));
@@ -172,7 +173,7 @@ public class ItemVillageSign extends Item {
      * 获取文化类型
      */
     public static Culture getCulture(ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         if (nbt.contains(NBT_CULTURE)) {
             try {
                 return Culture.valueOf(nbt.getString(NBT_CULTURE));
@@ -187,7 +188,7 @@ public class ItemVillageSign extends Item {
      * 获取村庄名称
      */
     public static String getVillageName(ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         return nbt.getString(NBT_VILLAGE_NAME);
     }
     
@@ -195,7 +196,7 @@ public class ItemVillageSign extends Item {
      * 设置村庄类型
      */
     public static void setVillageType(ItemStack stack, VillageType villageType) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         if (villageType != null) {
             nbt.putString(NBT_VILLAGE_TYPE, villageType.name());
         } else {
@@ -207,7 +208,7 @@ public class ItemVillageSign extends Item {
      * 设置文化类型
      */
     public static void setCulture(ItemStack stack, Culture culture) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         if (culture != null) {
             nbt.putString(NBT_CULTURE, culture.name());
         } else {
@@ -219,7 +220,7 @@ public class ItemVillageSign extends Item {
      * 设置村庄名称
      */
     public static void setVillageName(ItemStack stack, String name) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemNBTHelper.getOrCreateTag(stack);
         if (name != null && !name.trim().isEmpty()) {
             nbt.putString(NBT_VILLAGE_NAME, name.trim());
         } else {
