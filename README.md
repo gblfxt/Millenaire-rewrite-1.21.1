@@ -29,12 +29,12 @@ Originally created as one of Minecraft's most ambitious civilization mods, Mille
 #### Core Systems
 
 - **Advanced Currency System**: Three-tier currency with copper, silver, and gold deniers
-- **Complete Bilingual Translation**: 350+ English + 350+ Chinese entries, all creative tabs and items fully translated
+- **Complete Bilingual Translation**: 450+ English + 450+ Chinese entries, all creative tabs and items fully translated
 - **Creative Mode Tabs**: 9 civilization tabs (Norman, Byzantine, Indian, Japanese, Mayan, Seljuk, Inuit, + Blocks, Food, Misc)
 - **Decorative Blocks**: Stone, wood, earth, and culture-specific building materials
 - **Magic Items**: Dynamic amulets, wands, and the legendary Amulet of Creation
 
-#### Item Systems (240+ Items!)
+#### Item Systems (225+ Items!)
 
 | Category | Count | Description |
 |----------|-------|-------------|
@@ -88,7 +88,7 @@ All 7 cultures fully implemented with complete item sets:
 
 | System | Items | Status | Description |
 |--------|-------|--------|-------------|
-| **Item System** | 240+ items | ✅ Complete | All cultural items, tools, food, materials registered |
+| **Item System** | 225+ items | ✅ Complete | All cultural items, tools, food, materials registered |
 | **Building Materials** | 30 items | ✅ Complete | Culture-specific building blocks and materials |
 | **Quest System** | 8 items | ✅ Complete | Creation Quest items with special Amulet of Creation |
 | **Trade Goods** | 14 items | ✅ Complete | Dyes, spices, luxury items for trading |
@@ -96,8 +96,8 @@ All 7 cultures fully implemented with complete item sets:
 | **Currency System** | 3 tiers | ✅ Complete | Copper, Silver, Gold deniers |
 | **Food System** | 45+ foods | ✅ Complete | Culture-specific cuisine with effects |
 | **Magic Items** | 10+ items | ✅ Complete | Amulets, wands with special abilities |
-| **Block System** | 25+ blocks | ✅ Complete | Building blocks, ores, functional blocks |
-| **Translation** | 350+ entries | ✅ Complete | English/Chinese for all content |
+| **Block System** | 35 blocks | ✅ Complete | Building blocks, ores, functional blocks |
+| **Translation** | 450+ entries | ✅ Complete | English/Chinese for all content |
 | **Creative Tabs** | 9 tabs | ✅ Complete | All cultures + utility tabs |
 
 #### In Progress
@@ -134,12 +134,12 @@ The port from Forge 1.20.1 to NeoForge 1.21.1 included:
 
 #### Project Statistics
 
-- **Java Classes**: 90+ modern implementations
-- **Texture Assets**: 150+ high-quality PNG files
-- **Generated Resources**: 250+ automatically created files
-- **Registered Items**: 240+ unique items with proper integration
-- **Registered Blocks**: 25+ blocks with full variant support
-- **Translation Keys**: 350+ bilingual entries
+- **Java Classes**: 140+ modern implementations
+- **Texture Assets**: 950+ high-quality PNG files
+- **Generated Resources**: 180+ automatically created files
+- **Registered Items**: 225+ unique items with proper integration
+- **Registered Blocks**: 35 blocks with full variant support
+- **Translation Keys**: 450+ bilingual entries
 
 #### Code Quality
 
@@ -183,7 +183,7 @@ cd Millenaire-rewrite-1.21.1
 
 ### Contributing
 
-We welcome contributions! Please see our development roadmap and pick an area that interests you.
+We welcome contributions! Here are the current development priorities:
 
 #### Current Priorities
 
@@ -222,12 +222,12 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 ### 核心特性
 
 - **三层货币系统**：铜、银、金第纳尔
-- **完整双语翻译**：350+ 条英文+350+ 条中文，所有创造标签和物品均已翻译
+- **完整双语翻译**：450+ 条英文+450+ 条中文，所有创造标签和物品均已翻译
 - **创造模式标签页**：9 个文明分类（诺曼、拜占庭、印度、日本、玛雅、塞尔柱、因纽特 + 方块、食物、杂项）
 - **装饰方块系统**：石材、木材、土质及文化特色建筑材料
 - **魔法物品**：动态护符、法杖及传奇创世护身符
 
-#### 物品系统（240+ 物品！）
+#### 物品系统（225+ 物品！）
 
 | 类别 | 数量 | 描述 |
 |------|------|------|
@@ -281,7 +281,7 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 
 | 系统 | 数量 | 状态 | 描述 |
 |------|------|------|------|
-| **物品系统** | 240+ 物品 | ✅ 完成 | 所有文化物品、工具、食物、材料已注册 |
+| **物品系统** | 225+ 物品 | ✅ 完成 | 所有文化物品、工具、食物、材料已注册 |
 | **建筑材料** | 30 物品 | ✅ 完成 | 文化特色建筑方块和材料 |
 | **任务系统** | 8 物品 | ✅ 完成 | 创世任务物品及特殊创世护身符 |
 | **贸易品** | 14 物品 | ✅ 完成 | 染料、香料、贸易奢侈品 |
@@ -289,8 +289,8 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 | **货币系统** | 3 层 | ✅ 完成 | 铜、银、金第纳尔 |
 | **食物系统** | 45+ 食物 | ✅ 完成 | 文化特色料理及效果 |
 | **魔法物品** | 10+ 物品 | ✅ 完成 | 护符、法杖及特殊能力 |
-| **方块系统** | 25+ 方块 | ✅ 完成 | 建筑方块、矿石、功能方块 |
-| **翻译系统** | 350+ 条 | ✅ 完成 | 英文/中文全内容翻译 |
+| **方块系统** | 35 方块 | ✅ 完成 | 建筑方块、矿石、功能方块 |
+| **翻译系统** | 450+ 条 | ✅ 完成 | 英文/中文全内容翻译 |
 | **创造标签** | 9 个 | ✅ 完成 | 所有文化 + 实用标签 |
 
 #### 开发中
@@ -327,12 +327,12 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 
 #### 项目统计
 
-- **Java 类**: 90+ 个现代实现
-- **材质资产**: 150+ 个高质量 PNG 文件
-- **生成资源**: 250+ 个自动创建的文件
-- **注册物品**: 240+ 个独特物品，完整集成
-- **注册方块**: 25+ 个方块，支持完整变体
-- **翻译键**: 350+ 条双语条目
+- **Java 类**: 140+ 个现代实现
+- **材质资产**: 950+ 个高质量 PNG 文件
+- **生成资源**: 180+ 个自动创建的文件
+- **注册物品**: 225+ 个独特物品，完整集成
+- **注册方块**: 35 个方块，支持完整变体
+- **翻译键**: 450+ 条双语条目
 
 #### 代码质量
 
@@ -376,7 +376,7 @@ cd Millenaire-rewrite-1.21.1
 
 ### 贡献
 
-我们欢迎贡献！请查看我们的开发路线图，选择您感兴趣的领域。
+我们欢迎贡献！以下是当前的开发优先级：
 
 #### 当前优先级
 
