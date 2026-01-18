@@ -686,6 +686,29 @@ public class ModItems {
                     com.jasoncian.millenaire_rewrite.items.magic.DynamicAmuletItem.AmuletType.YGGDRASIL,
                     new Item.Properties()));
 
+    // ================ Creation Quest Items ================
+
+    /** Sadhu Scroll - Chapter 1 quest item, obtained from Indian Sadhu */
+    public static final DeferredHolder<Item, Item> SADHU_SCROLL = ITEMS.register("sadhu_scroll",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
+
+    /** Alchemist Notes - Chapter 2 quest item, contains ancient knowledge */
+    public static final DeferredHolder<Item, Item> ALCHEMIST_NOTES = ITEMS.register("alchemist_notes",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
+
+    /** Fallen King Artifact - Chapter 3 quest item, relic of an ancient king */
+    public static final DeferredHolder<Item, Item> FALLEN_KING_ARTIFACT = ITEMS.register("fallen_king_artifact",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.RARE)));
+
+    /** Galianite Ore Item - Raw galianite ore, can be processed into dust */
+    public static final DeferredHolder<Item, Item> GALIANITE_ORE_ITEM = ITEMS.register("galianite_ore_item",
+            () -> new Item(new Item.Properties()));
+
+    /** Amulet of Creation - Final quest reward, legendary artifact with combined powers */
+    public static final DeferredHolder<Item, Item> AMULET_CREATION = ITEMS.register("amulet_creation",
+            () -> new com.jasoncian.millenaire_rewrite.items.magic.AmuletOfCreationItem(
+                    new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.EPIC).fireResistant()));
+
     // ================ 羊皮纸/卷轴 ================
 
     // 诺曼羊皮纸
@@ -850,6 +873,173 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> PAINT_BUCKET_BLACK = ITEMS.register("paint_bucket_black",
             () -> new Item(new Item.Properties().stacksTo(16)));
 
+    // ================ Building Materials ================
+
+    // Indian Building Materials
+    /** Wet Brick - Dries into mud brick in sunlight */
+    public static final DeferredHolder<Item, Item> WET_BRICK = ITEMS.register("wet_brick",
+            () -> new Item(new Item.Properties()));
+
+    /** Mud Brick - Basic Indian building material */
+    public static final DeferredHolder<Item, Item> MUD_BRICK = ITEMS.register("mud_brick",
+            () -> new Item(new Item.Properties()));
+
+    /** Cooked Brick - Fired Indian building material */
+    public static final DeferredHolder<Item, Item> COOKED_BRICK = ITEMS.register("cooked_brick",
+            () -> new Item(new Item.Properties()));
+
+    // Japanese Building Materials
+    /** Thatch - Japanese roofing material */
+    public static final DeferredHolder<Item, Item> THATCH = ITEMS.register("thatch",
+            () -> new Item(new Item.Properties()));
+
+    /** Rice Straw - Raw material for thatch */
+    public static final DeferredHolder<Item, Item> RICE_STRAW = ITEMS.register("rice_straw",
+            () -> new Item(new Item.Properties()));
+
+    /** Washi Paper - Traditional Japanese paper */
+    public static final DeferredHolder<Item, Item> WASHI_PAPER = ITEMS.register("washi_paper",
+            () -> new Item(new Item.Properties()));
+
+    // Norman Building Materials
+    /** Timber Frame - Norman/Japanese building material */
+    public static final DeferredHolder<Item, Item> TIMBER_FRAME = ITEMS.register("timber_frame",
+            () -> new Item(new Item.Properties()));
+
+    /** Wattle and Daub - Norman wall material */
+    public static final DeferredHolder<Item, Item> WATTLE_DAUB = ITEMS.register("wattle_daub",
+            () -> new Item(new Item.Properties()));
+
+    /** Plaster - Wall finishing material */
+    public static final DeferredHolder<Item, Item> PLASTER = ITEMS.register("plaster",
+            () -> new Item(new Item.Properties()));
+
+    // Byzantine Building Materials
+    /** Byzantine Tile - Decorative Byzantine tile */
+    public static final DeferredHolder<Item, Item> BYZANTINE_TILE = ITEMS.register("byzantine_tile",
+            () -> new Item(new Item.Properties()));
+
+    /** Marble Chunk - Raw marble for building */
+    public static final DeferredHolder<Item, Item> MARBLE_CHUNK = ITEMS.register("marble_chunk",
+            () -> new Item(new Item.Properties()));
+
+    // Mayan Building Materials
+    /** Limestone - Mayan building stone */
+    public static final DeferredHolder<Item, Item> LIMESTONE = ITEMS.register("limestone",
+            () -> new Item(new Item.Properties()));
+
+    /** Obsidian Shard - Sharp obsidian for tools and building */
+    public static final DeferredHolder<Item, Item> OBSIDIAN_SHARD = ITEMS.register("obsidian_shard",
+            () -> new Item(new Item.Properties()));
+
+    // Seljuk Building Materials
+    /** Glazed Tile - Decorative Seljuk tile */
+    public static final DeferredHolder<Item, Item> GLAZED_TILE = ITEMS.register("glazed_tile",
+            () -> new Item(new Item.Properties()));
+
+    /** Carved Stone - Ornamental Seljuk stonework */
+    public static final DeferredHolder<Item, Item> CARVED_STONE = ITEMS.register("carved_stone",
+            () -> new Item(new Item.Properties()));
+
+    // Inuit Building Materials
+    /** Whale Bone - Structural material for Inuit buildings */
+    public static final DeferredHolder<Item, Item> WHALE_BONE = ITEMS.register("whale_bone",
+            () -> new Item(new Item.Properties()));
+
+    /** Packed Snow Item - Compressed snow for building */
+    public static final DeferredHolder<Item, Item> PACKED_SNOW_ITEM = ITEMS.register("packed_snow_item",
+            () -> new Item(new Item.Properties()));
+
+    // ================ Trade Goods & Dyes ================
+
+    // Mayan Trade Goods
+    /** Cochineal - Mayan red dye source from scale insects */
+    public static final DeferredHolder<Item, Item> COCHINEAL = ITEMS.register("cochineal",
+            () -> new Item(new Item.Properties()));
+
+    /** Cochineal Dye - Red dye extracted from cochineal */
+    public static final DeferredHolder<Item, Item> COCHINEAL_DYE = ITEMS.register("cochineal_dye",
+            () -> new Item(new Item.Properties()));
+
+    // Indian Trade Goods
+    /** Indigo Plant - Indian blue dye source */
+    public static final DeferredHolder<Item, Item> INDIGO = ITEMS.register("indigo",
+            () -> new Item(new Item.Properties()));
+
+    /** Indigo Dye - Deep blue dye from indigo plants */
+    public static final DeferredHolder<Item, Item> INDIGO_DYE = ITEMS.register("indigo_dye",
+            () -> new Item(new Item.Properties()));
+
+    /** Saffron - Precious Indian spice and yellow dye */
+    public static final DeferredHolder<Item, Item> SAFFRON = ITEMS.register("saffron",
+            () -> new Item(new Item.Properties()));
+
+    // Seljuk Trade Goods
+    /** Sumac - Seljuk spice with tangy flavor */
+    public static final DeferredHolder<Item, Item> SUMAC = ITEMS.register("sumac",
+            () -> new Item(new Item.Properties()));
+
+    /** Rose Water - Seljuk luxury perfume and flavoring */
+    public static final DeferredHolder<Item, Item> ROSE_WATER = ITEMS.register("rose_water",
+            () -> new Item(new Item.Properties()));
+
+    /** Rose Petals - Used to make rose water */
+    public static final DeferredHolder<Item, Item> ROSE_PETALS = ITEMS.register("rose_petals",
+            () -> new Item(new Item.Properties()));
+
+    // Byzantine Trade Goods
+    /** Byzantine Purple Dye - Rare and valuable Tyrian purple */
+    public static final DeferredHolder<Item, Item> TYRIAN_PURPLE = ITEMS.register("tyrian_purple",
+            () -> new Item(new Item.Properties().rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
+
+    /** Murex Shell - Source of Tyrian purple dye */
+    public static final DeferredHolder<Item, Item> MUREX_SHELL = ITEMS.register("murex_shell",
+            () -> new Item(new Item.Properties()));
+
+    // Norman Trade Goods
+    /** Woad - Norman blue dye plant */
+    public static final DeferredHolder<Item, Item> WOAD = ITEMS.register("woad",
+            () -> new Item(new Item.Properties()));
+
+    /** Woad Dye - Blue dye from woad plant */
+    public static final DeferredHolder<Item, Item> WOAD_DYE = ITEMS.register("woad_dye",
+            () -> new Item(new Item.Properties()));
+
+    // ================ Lone Structure Loot ================
+
+    /** Ancient Scroll - Lore item found in ruins, contains ancient knowledge */
+    public static final DeferredHolder<Item, Item> ANCIENT_SCROLL = ITEMS.register("ancient_scroll",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
+
+    /** Treasure Map - Points to hidden loot locations */
+    public static final DeferredHolder<Item, Item> TREASURE_MAP = ITEMS.register("treasure_map",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+
+    /** Bandit Key - Unlocks bandit chests and doors */
+    public static final DeferredHolder<Item, Item> BANDIT_KEY = ITEMS.register("bandit_key",
+            () -> new Item(new Item.Properties().stacksTo(16)));
+
+    /** Ancient Coin - Old currency found in ruins, can be traded or collected */
+    public static final DeferredHolder<Item, Item> ANCIENT_COIN = ITEMS.register("ancient_coin",
+            () -> new Item(new Item.Properties()));
+
+    /** Rusted Sword - Damaged weapon found in ruins, can be repaired */
+    public static final DeferredHolder<Item, Item> RUSTED_SWORD = ITEMS.register("rusted_sword",
+            () -> new SwordItem(net.minecraft.world.item.Tiers.WOOD, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(net.minecraft.world.item.Tiers.WOOD, 2, -2.4F))));
+
+    /** Broken Armor Fragment - Armor piece found in ruins, crafting material */
+    public static final DeferredHolder<Item, Item> BROKEN_ARMOR_FRAGMENT = ITEMS.register("broken_armor_fragment",
+            () -> new Item(new Item.Properties()));
+
+    /** Mysterious Gem - Rare gem found in lone structures, valuable trade item */
+    public static final DeferredHolder<Item, Item> MYSTERIOUS_GEM = ITEMS.register("mysterious_gem",
+            () -> new Item(new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
+
+    /** Bandit's Pouch - Contains random loot when opened */
+    public static final DeferredHolder<Item, Item> BANDITS_POUCH = ITEMS.register("bandits_pouch",
+            () -> new Item(new Item.Properties().stacksTo(16)));
+
     // ================ Block Items ================
 
     /** 火坑方块物品 */
@@ -863,6 +1053,72 @@ public class ModItems {
     /** 导入桌方块物品 */
     public static final DeferredHolder<Item, BlockItem> IMPORT_TABLE = ITEMS.register("import_table",
             () -> new BlockItem(ModBlocks.IMPORT_TABLE.get(), new Item.Properties()));
+
+    // ================ Building Block Items ================
+
+    // Indian Building Block Items
+    /** Mud Brick Block Item */
+    public static final DeferredHolder<Item, BlockItem> MUD_BRICK_BLOCK_ITEM = ITEMS.register("mud_brick_block",
+            () -> new BlockItem(ModBlocks.MUD_BRICK_BLOCK.get(), new Item.Properties()));
+
+    /** Cooked Brick Block Item */
+    public static final DeferredHolder<Item, BlockItem> COOKED_BRICK_BLOCK_ITEM = ITEMS.register("cooked_brick_block",
+            () -> new BlockItem(ModBlocks.COOKED_BRICK_BLOCK.get(), new Item.Properties()));
+
+    // Japanese Building Block Items
+    /** Thatch Block Item */
+    public static final DeferredHolder<Item, BlockItem> THATCH_BLOCK_ITEM = ITEMS.register("thatch_block",
+            () -> new BlockItem(ModBlocks.THATCH_BLOCK.get(), new Item.Properties()));
+
+    /** Paper Wall Block Item */
+    public static final DeferredHolder<Item, BlockItem> PAPER_WALL_BLOCK_ITEM = ITEMS.register("paper_wall_block",
+            () -> new BlockItem(ModBlocks.PAPER_WALL_BLOCK.get(), new Item.Properties()));
+
+    // Norman Building Block Items
+    /** Timber Frame Block Item */
+    public static final DeferredHolder<Item, BlockItem> TIMBER_FRAME_BLOCK_ITEM = ITEMS.register("timber_frame_block",
+            () -> new BlockItem(ModBlocks.TIMBER_FRAME_BLOCK.get(), new Item.Properties()));
+
+    /** Wattle and Daub Block Item */
+    public static final DeferredHolder<Item, BlockItem> WATTLE_DAUB_BLOCK_ITEM = ITEMS.register("wattle_daub_block",
+            () -> new BlockItem(ModBlocks.WATTLE_DAUB_BLOCK.get(), new Item.Properties()));
+
+    /** Plaster Block Item */
+    public static final DeferredHolder<Item, BlockItem> PLASTER_BLOCK_ITEM = ITEMS.register("plaster_block",
+            () -> new BlockItem(ModBlocks.PLASTER_BLOCK.get(), new Item.Properties()));
+
+    // Byzantine Building Block Items
+    /** Byzantine Tile Block Item */
+    public static final DeferredHolder<Item, BlockItem> BYZANTINE_TILE_BLOCK_ITEM = ITEMS.register("byzantine_tile_block",
+            () -> new BlockItem(ModBlocks.BYZANTINE_TILE_BLOCK.get(), new Item.Properties()));
+
+    /** Marble Block Item */
+    public static final DeferredHolder<Item, BlockItem> MARBLE_BLOCK_ITEM = ITEMS.register("marble_block",
+            () -> new BlockItem(ModBlocks.MARBLE_BLOCK.get(), new Item.Properties()));
+
+    // Mayan Building Block Items
+    /** Limestone Block Item */
+    public static final DeferredHolder<Item, BlockItem> LIMESTONE_BLOCK_ITEM = ITEMS.register("limestone_block",
+            () -> new BlockItem(ModBlocks.LIMESTONE_BLOCK.get(), new Item.Properties()));
+
+    // Seljuk Building Block Items
+    /** Glazed Tile Block Item */
+    public static final DeferredHolder<Item, BlockItem> GLAZED_TILE_BLOCK_ITEM = ITEMS.register("glazed_tile_block",
+            () -> new BlockItem(ModBlocks.GLAZED_TILE_BLOCK.get(), new Item.Properties()));
+
+    /** Carved Stone Block Item */
+    public static final DeferredHolder<Item, BlockItem> CARVED_STONE_BLOCK_ITEM = ITEMS.register("carved_stone_block",
+            () -> new BlockItem(ModBlocks.CARVED_STONE_BLOCK.get(), new Item.Properties()));
+
+    // ================ Quest Block Items ================
+
+    /** Galianite Ore Block Item */
+    public static final DeferredHolder<Item, BlockItem> GALIANITE_ORE_BLOCK = ITEMS.register("galianite_ore",
+            () -> new BlockItem(ModBlocks.GALIANITE_ORE.get(), new Item.Properties()));
+
+    /** Deepslate Galianite Ore Block Item */
+    public static final DeferredHolder<Item, BlockItem> DEEPSLATE_GALIANITE_ORE_BLOCK = ITEMS.register("deepslate_galianite_ore",
+            () -> new BlockItem(ModBlocks.DEEPSLATE_GALIANITE_ORE.get(), new Item.Properties()));
 
     // ================ Spawn Eggs ================
 

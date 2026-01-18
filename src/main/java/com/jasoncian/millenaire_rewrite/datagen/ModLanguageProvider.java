@@ -330,6 +330,27 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.AMULET_YGGDRASIL.get(), "Yggdrasil Amulet");
         add(ModItems.AMULET_SKOLL_HATI.get(), "Skoll Hati Amulet");
 
+        // ================ Creation Quest Items ================
+        add(ModItems.SADHU_SCROLL.get(), "Sadhu Scroll");
+        add(ModItems.ALCHEMIST_NOTES.get(), "Alchemist's Notes");
+        add(ModItems.FALLEN_KING_ARTIFACT.get(), "Fallen King's Artifact");
+        add(ModItems.GALIANITE_ORE_ITEM.get(), "Raw Galianite");
+        add(ModItems.AMULET_CREATION.get(), "Amulet of Creation");
+
+        // Quest item tooltips
+        add("item.millenaire_rewrite.amulet_creation.lore1", "Forged from Galianite and ancient wisdom,");
+        add("item.millenaire_rewrite.amulet_creation.lore2", "this artifact holds the power of creation itself.");
+        add("item.millenaire_rewrite.amulet_creation.passive", "Passive: Slow regeneration while held");
+        add("item.millenaire_rewrite.amulet_creation.active", "Active: Right-click for powerful buffs");
+        add("item.millenaire_rewrite.amulet_creation.cooldown", "On cooldown: %s seconds remaining");
+        add("item.millenaire_rewrite.amulet_creation.cooldown_display", "Cooldown: %sm %ss");
+        add("item.millenaire_rewrite.amulet_creation.ready", "Ready to use!");
+        add("item.millenaire_rewrite.amulet_creation.activated", "The Amulet of Creation surges with power!");
+
+        // Quest blocks
+        add(ModItems.GALIANITE_ORE_BLOCK.get(), "Galianite Ore");
+        add(ModItems.DEEPSLATE_GALIANITE_ORE_BLOCK.get(), "Deepslate Galianite Ore");
+
         // ================ Functional Blocks ================
         add(ModItems.FIRE_PIT.get(), "Fire Pit");
         add("container.millenaire_rewrite.fire_pit", "Fire Pit");
@@ -429,6 +450,85 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.WALL_CARPET_SMALL.get(), "Small Wall Carpet");
         add(ModItems.WALL_CARPET_MEDIUM.get(), "Medium Wall Carpet");
         add(ModItems.WALL_CARPET_LARGE.get(), "Large Wall Carpet");
+
+        // ================ Building Materials ================
+        // Indian Building Materials
+        add(ModItems.WET_BRICK.get(), "Wet Brick");
+        add(ModItems.MUD_BRICK.get(), "Mud Brick");
+        add(ModItems.COOKED_BRICK.get(), "Cooked Brick");
+
+        // Japanese Building Materials
+        add(ModItems.THATCH.get(), "Thatch");
+        add(ModItems.RICE_STRAW.get(), "Rice Straw");
+        add(ModItems.WASHI_PAPER.get(), "Washi Paper");
+
+        // Norman Building Materials
+        add(ModItems.TIMBER_FRAME.get(), "Timber Frame");
+        add(ModItems.WATTLE_DAUB.get(), "Wattle and Daub");
+        add(ModItems.PLASTER.get(), "Plaster");
+
+        // Byzantine Building Materials
+        add(ModItems.BYZANTINE_TILE.get(), "Byzantine Tile");
+        add(ModItems.MARBLE_CHUNK.get(), "Marble Chunk");
+
+        // Mayan Building Materials
+        add(ModItems.LIMESTONE.get(), "Limestone");
+        add(ModItems.OBSIDIAN_SHARD.get(), "Obsidian Shard");
+
+        // Seljuk Building Materials
+        add(ModItems.GLAZED_TILE.get(), "Glazed Tile");
+        add(ModItems.CARVED_STONE.get(), "Carved Stone");
+
+        // Inuit Building Materials
+        add(ModItems.WHALE_BONE.get(), "Whale Bone");
+        add(ModItems.PACKED_SNOW_ITEM.get(), "Packed Snow");
+
+        // ================ Building Blocks ================
+        add(ModItems.MUD_BRICK_BLOCK_ITEM.get(), "Mud Brick Block");
+        add(ModItems.COOKED_BRICK_BLOCK_ITEM.get(), "Cooked Brick Block");
+        add(ModItems.THATCH_BLOCK_ITEM.get(), "Thatch Block");
+        add(ModItems.PAPER_WALL_BLOCK_ITEM.get(), "Paper Wall");
+        add(ModItems.TIMBER_FRAME_BLOCK_ITEM.get(), "Timber Frame Block");
+        add(ModItems.WATTLE_DAUB_BLOCK_ITEM.get(), "Wattle and Daub Block");
+        add(ModItems.PLASTER_BLOCK_ITEM.get(), "Plaster Block");
+        add(ModItems.BYZANTINE_TILE_BLOCK_ITEM.get(), "Byzantine Tile Block");
+        add(ModItems.MARBLE_BLOCK_ITEM.get(), "Marble Block");
+        add(ModItems.LIMESTONE_BLOCK_ITEM.get(), "Limestone Block");
+        add(ModItems.GLAZED_TILE_BLOCK_ITEM.get(), "Glazed Tile Block");
+        add(ModItems.CARVED_STONE_BLOCK_ITEM.get(), "Carved Stone Block");
+
+        // ================ Trade Goods & Dyes ================
+        // Mayan
+        add(ModItems.COCHINEAL.get(), "Cochineal");
+        add(ModItems.COCHINEAL_DYE.get(), "Cochineal Dye");
+
+        // Indian
+        add(ModItems.INDIGO.get(), "Indigo");
+        add(ModItems.INDIGO_DYE.get(), "Indigo Dye");
+        add(ModItems.SAFFRON.get(), "Saffron");
+
+        // Seljuk
+        add(ModItems.SUMAC.get(), "Sumac");
+        add(ModItems.ROSE_WATER.get(), "Rose Water");
+        add(ModItems.ROSE_PETALS.get(), "Rose Petals");
+
+        // Byzantine
+        add(ModItems.TYRIAN_PURPLE.get(), "Tyrian Purple Dye");
+        add(ModItems.MUREX_SHELL.get(), "Murex Shell");
+
+        // Norman
+        add(ModItems.WOAD.get(), "Woad");
+        add(ModItems.WOAD_DYE.get(), "Woad Dye");
+
+        // ================ Lone Structure Loot ================
+        add(ModItems.ANCIENT_SCROLL.get(), "Ancient Scroll");
+        add(ModItems.TREASURE_MAP.get(), "Treasure Map");
+        add(ModItems.BANDIT_KEY.get(), "Bandit Key");
+        add(ModItems.ANCIENT_COIN.get(), "Ancient Coin");
+        add(ModItems.RUSTED_SWORD.get(), "Rusted Sword");
+        add(ModItems.BROKEN_ARMOR_FRAGMENT.get(), "Broken Armor Fragment");
+        add(ModItems.MYSTERIOUS_GEM.get(), "Mysterious Gem");
+        add(ModItems.BANDITS_POUCH.get(), "Bandit's Pouch");
 
         // Currency formatting
         add("currency.millenaire_rewrite.gold", "Gold");
@@ -735,6 +835,27 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.AMULET_YGGDRASIL.get(), "世界树护身符");
         add(ModItems.AMULET_SKOLL_HATI.get(), "斯库尔·哈提护身符");
 
+        // ================ 创世任务物品 ================
+        add(ModItems.SADHU_SCROLL.get(), "苦行僧卷轴");
+        add(ModItems.ALCHEMIST_NOTES.get(), "炼金术士笔记");
+        add(ModItems.FALLEN_KING_ARTIFACT.get(), "堕落之王的遗物");
+        add(ModItems.GALIANITE_ORE_ITEM.get(), "粗加里亚奈特");
+        add(ModItems.AMULET_CREATION.get(), "创世护身符");
+
+        // 任务物品提示
+        add("item.millenaire_rewrite.amulet_creation.lore1", "由加里亚奈特与远古智慧锻造，");
+        add("item.millenaire_rewrite.amulet_creation.lore2", "此神器蕴含着创世之力。");
+        add("item.millenaire_rewrite.amulet_creation.passive", "被动：持有时缓慢回复生命");
+        add("item.millenaire_rewrite.amulet_creation.active", "主动：右键获得强力增益");
+        add("item.millenaire_rewrite.amulet_creation.cooldown", "冷却中：还剩 %s 秒");
+        add("item.millenaire_rewrite.amulet_creation.cooldown_display", "冷却时间：%s分 %s秒");
+        add("item.millenaire_rewrite.amulet_creation.ready", "可以使用！");
+        add("item.millenaire_rewrite.amulet_creation.activated", "创世护身符迸发出强大的力量！");
+
+        // 任务方块
+        add(ModItems.GALIANITE_ORE_BLOCK.get(), "加里亚奈特矿石");
+        add(ModItems.DEEPSLATE_GALIANITE_ORE_BLOCK.get(), "深层加里亚奈特矿石");
+
         // ================ 功能方块 ================
         add(ModItems.FIRE_PIT.get(), "火坑");
         add("container.millenaire_rewrite.fire_pit", "火坑");
@@ -834,6 +955,85 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.WALL_CARPET_SMALL.get(), "小型壁毯");
         add(ModItems.WALL_CARPET_MEDIUM.get(), "中型壁毯");
         add(ModItems.WALL_CARPET_LARGE.get(), "大型壁毯");
+
+        // ================ 建筑材料 ================
+        // 印度建筑材料
+        add(ModItems.WET_BRICK.get(), "湿砖");
+        add(ModItems.MUD_BRICK.get(), "泥砖");
+        add(ModItems.COOKED_BRICK.get(), "烧制砖");
+
+        // 日本建筑材料
+        add(ModItems.THATCH.get(), "茅草");
+        add(ModItems.RICE_STRAW.get(), "稻草");
+        add(ModItems.WASHI_PAPER.get(), "和纸");
+
+        // 诺曼建筑材料
+        add(ModItems.TIMBER_FRAME.get(), "木框架");
+        add(ModItems.WATTLE_DAUB.get(), "编条夯土");
+        add(ModItems.PLASTER.get(), "灰泥");
+
+        // 拜占庭建筑材料
+        add(ModItems.BYZANTINE_TILE.get(), "拜占庭瓷砖");
+        add(ModItems.MARBLE_CHUNK.get(), "大理石块");
+
+        // 玛雅建筑材料
+        add(ModItems.LIMESTONE.get(), "石灰石");
+        add(ModItems.OBSIDIAN_SHARD.get(), "黑曜石碎片");
+
+        // 塞尔柱建筑材料
+        add(ModItems.GLAZED_TILE.get(), "琉璃瓦");
+        add(ModItems.CARVED_STONE.get(), "雕刻石");
+
+        // 因纽特建筑材料
+        add(ModItems.WHALE_BONE.get(), "鲸骨");
+        add(ModItems.PACKED_SNOW_ITEM.get(), "压实雪块");
+
+        // ================ 建筑方块 ================
+        add(ModItems.MUD_BRICK_BLOCK_ITEM.get(), "泥砖方块");
+        add(ModItems.COOKED_BRICK_BLOCK_ITEM.get(), "烧制砖方块");
+        add(ModItems.THATCH_BLOCK_ITEM.get(), "茅草方块");
+        add(ModItems.PAPER_WALL_BLOCK_ITEM.get(), "纸质墙壁");
+        add(ModItems.TIMBER_FRAME_BLOCK_ITEM.get(), "木框架方块");
+        add(ModItems.WATTLE_DAUB_BLOCK_ITEM.get(), "编条夯土方块");
+        add(ModItems.PLASTER_BLOCK_ITEM.get(), "灰泥方块");
+        add(ModItems.BYZANTINE_TILE_BLOCK_ITEM.get(), "拜占庭瓷砖方块");
+        add(ModItems.MARBLE_BLOCK_ITEM.get(), "大理石方块");
+        add(ModItems.LIMESTONE_BLOCK_ITEM.get(), "石灰石方块");
+        add(ModItems.GLAZED_TILE_BLOCK_ITEM.get(), "琉璃瓦方块");
+        add(ModItems.CARVED_STONE_BLOCK_ITEM.get(), "雕刻石方块");
+
+        // ================ 贸易品与染料 ================
+        // 玛雅
+        add(ModItems.COCHINEAL.get(), "胭脂虫");
+        add(ModItems.COCHINEAL_DYE.get(), "胭脂红染料");
+
+        // 印度
+        add(ModItems.INDIGO.get(), "蓝靛");
+        add(ModItems.INDIGO_DYE.get(), "靛蓝染料");
+        add(ModItems.SAFFRON.get(), "藏红花");
+
+        // 塞尔柱
+        add(ModItems.SUMAC.get(), "漆树果");
+        add(ModItems.ROSE_WATER.get(), "玫瑰水");
+        add(ModItems.ROSE_PETALS.get(), "玫瑰花瓣");
+
+        // 拜占庭
+        add(ModItems.TYRIAN_PURPLE.get(), "泰尔紫染料");
+        add(ModItems.MUREX_SHELL.get(), "骨螺壳");
+
+        // 诺曼
+        add(ModItems.WOAD.get(), "菘蓝");
+        add(ModItems.WOAD_DYE.get(), "菘蓝染料");
+
+        // ================ 孤立建筑战利品 ================
+        add(ModItems.ANCIENT_SCROLL.get(), "远古卷轴");
+        add(ModItems.TREASURE_MAP.get(), "藏宝图");
+        add(ModItems.BANDIT_KEY.get(), "强盗钥匙");
+        add(ModItems.ANCIENT_COIN.get(), "古钱币");
+        add(ModItems.RUSTED_SWORD.get(), "锈迹斑斑的剑");
+        add(ModItems.BROKEN_ARMOR_FRAGMENT.get(), "破损的盔甲碎片");
+        add(ModItems.MYSTERIOUS_GEM.get(), "神秘宝石");
+        add(ModItems.BANDITS_POUCH.get(), "强盗的钱袋");
 
         // ================ 颜料桶 ================
         add(ModItems.PAINT_BUCKET_WHITE.get(), "白色颜料桶");

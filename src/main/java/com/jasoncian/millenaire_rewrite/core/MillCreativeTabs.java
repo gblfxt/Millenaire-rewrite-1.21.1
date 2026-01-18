@@ -47,15 +47,36 @@ public class MillCreativeTabs {
             .title(Component.translatable("creativetab.millenaire_rewrite.blocks"))
             .icon(() -> new ItemStack(ModItems.DENIER.get())) // 临时使用货币作为图标
             .displayItems((parameters, output) -> {
-                // TODO: 添加建筑方块系统的方块
-                
+                // 功能方块
+                output.accept(ModItems.FIRE_PIT.get());
+                output.accept(ModItems.LOCKED_CHEST.get());
+                output.accept(ModItems.IMPORT_TABLE.get());
+
+                // 建筑方块
+                output.accept(ModItems.MUD_BRICK_BLOCK_ITEM.get());
+                output.accept(ModItems.COOKED_BRICK_BLOCK_ITEM.get());
+                output.accept(ModItems.THATCH_BLOCK_ITEM.get());
+                output.accept(ModItems.PAPER_WALL_BLOCK_ITEM.get());
+                output.accept(ModItems.TIMBER_FRAME_BLOCK_ITEM.get());
+                output.accept(ModItems.WATTLE_DAUB_BLOCK_ITEM.get());
+                output.accept(ModItems.PLASTER_BLOCK_ITEM.get());
+                output.accept(ModItems.BYZANTINE_TILE_BLOCK_ITEM.get());
+                output.accept(ModItems.MARBLE_BLOCK_ITEM.get());
+                output.accept(ModItems.LIMESTONE_BLOCK_ITEM.get());
+                output.accept(ModItems.GLAZED_TILE_BLOCK_ITEM.get());
+                output.accept(ModItems.CARVED_STONE_BLOCK_ITEM.get());
+
+                // Quest related blocks
+                output.accept(ModItems.GALIANITE_ORE_BLOCK.get());
+                output.accept(ModItems.DEEPSLATE_GALIANITE_ORE_BLOCK.get());
+
                 // ⚠️  注意：统一建筑方块系统的物品现在通过 BuildingBlockRegistry 自动管理
-                // 
+                //
                 // 方块分类规则：
                 // - BASIC文化的所有建筑方块 → 显示在此通用方块标签页
                 // - 特定文化的建筑方块（NORMAN、BYZANTINE等） → 显示在对应的文化标签页
                 // - 所有建筑方块族（基础方块+楼梯+半砖+墙）都会自动生成和分类
-                
+
                 // TODO: 实现新的统一方块系统的创造模式标签页集成
                 // TODO: 通过 BuildingBlockRegistry 自动获取 BASIC 文化的所有建筑方块物品
                 // TODO: 确保特定文化方块分配到正确的文化标签页，通用方块留在此标签页
@@ -131,7 +152,19 @@ public class MillCreativeTabs {
                 output.accept(ModItems.WOOL_CLOTHES.get());
                 output.accept(ModItems.SILK_CLOTHES.get());
                 output.accept(ModItems.TAPESTRY.get());
-                
+
+                // 诺曼建筑材料
+                output.accept(ModItems.TIMBER_FRAME.get());
+                output.accept(ModItems.WATTLE_DAUB.get());
+                output.accept(ModItems.PLASTER.get());
+                output.accept(ModItems.TIMBER_FRAME_BLOCK_ITEM.get());
+                output.accept(ModItems.WATTLE_DAUB_BLOCK_ITEM.get());
+                output.accept(ModItems.PLASTER_BLOCK_ITEM.get());
+
+                // 诺曼贸易品
+                output.accept(ModItems.WOAD.get());
+                output.accept(ModItems.WOAD_DYE.get());
+
                 // 诺曼羊皮纸
 
             })
@@ -172,7 +205,17 @@ public class MillCreativeTabs {
                 output.accept(ModItems.BYZANTINE_ICON_SMALL.get());
                 output.accept(ModItems.BYZANTINE_ICON_MEDIUM.get());
                 output.accept(ModItems.BYZANTINE_ICON_LARGE.get());
-                
+
+                // 拜占庭建筑材料
+                output.accept(ModItems.BYZANTINE_TILE.get());
+                output.accept(ModItems.MARBLE_CHUNK.get());
+                output.accept(ModItems.BYZANTINE_TILE_BLOCK_ITEM.get());
+                output.accept(ModItems.MARBLE_BLOCK_ITEM.get());
+
+                // 拜占庭贸易品
+                output.accept(ModItems.MUREX_SHELL.get());
+                output.accept(ModItems.TYRIAN_PURPLE.get());
+
                 // 拜占庭羊皮纸
 
             })
@@ -212,7 +255,14 @@ public class MillCreativeTabs {
                 output.accept(ModItems.JAPANESE_RED_BOOTS.get());
                 output.accept(ModItems.JAPANESE_SWORD.get());
                 output.accept(ModItems.JAPANESE_BOW.get());
-                
+
+                // 日本建筑材料
+                output.accept(ModItems.THATCH.get());
+                output.accept(ModItems.RICE_STRAW.get());
+                output.accept(ModItems.WASHI_PAPER.get());
+                output.accept(ModItems.THATCH_BLOCK_ITEM.get());
+                output.accept(ModItems.PAPER_WALL_BLOCK_ITEM.get());
+
                 // 日本羊皮纸
 
             })
@@ -247,7 +297,16 @@ public class MillCreativeTabs {
                 // 玛雅特色物品
                 output.accept(ModItems.OBSIDIAN_FLAKE.get());
                 output.accept(ModItems.MAYAN_STATUE.get());
-                
+
+                // 玛雅建筑材料
+                output.accept(ModItems.LIMESTONE.get());
+                output.accept(ModItems.OBSIDIAN_SHARD.get());
+                output.accept(ModItems.LIMESTONE_BLOCK_ITEM.get());
+
+                // 玛雅贸易品
+                output.accept(ModItems.COCHINEAL.get());
+                output.accept(ModItems.COCHINEAL_DYE.get());
+
                 // 玛雅羊皮纸
 
             })
@@ -273,9 +332,20 @@ public class MillCreativeTabs {
                 // 印度特色物品
                 output.accept(ModItems.INDIAN_STATUE.get());
                 output.accept(ModItems.PARCHMENT_SADHU.get());
+                output.accept(ModItems.BRICK_MOULD.get());
 
+                // 印度建筑材料
+                output.accept(ModItems.WET_BRICK.get());
+                output.accept(ModItems.MUD_BRICK.get());
+                output.accept(ModItems.COOKED_BRICK.get());
+                output.accept(ModItems.MUD_BRICK_BLOCK_ITEM.get());
+                output.accept(ModItems.COOKED_BRICK_BLOCK_ITEM.get());
 
-                
+                // 印度贸易品
+                output.accept(ModItems.INDIGO.get());
+                output.accept(ModItems.INDIGO_DYE.get());
+                output.accept(ModItems.SAFFRON.get());
+
                 // 印度羊皮纸
 
             })
@@ -315,6 +385,56 @@ public class MillCreativeTabs {
                 // 因纽特特色物品
                 output.accept(ModItems.TANNED_HIDE.get());
                 output.accept(ModItems.HIDE_HANGING.get());
+
+                // 因纽特建筑材料
+                output.accept(ModItems.WHALE_BONE.get());
+                output.accept(ModItems.PACKED_SNOW_ITEM.get());
+            })
+            .build());
+
+    // ================ 塞尔柱文化标签页 ================
+
+    /** Millenaire 塞尔柱文化标签页 - 塞尔柱土耳其物品 */
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MILLENAIRE_SELJUK =
+        CREATIVE_MODE_TABS.register("seljuk", () -> CreativeModeTab.builder()
+            .title(Component.translatable("creativetab.millenaire_rewrite.seljuk"))
+            .icon(() -> new ItemStack(ModItems.SELJUK_SCIMITAR.get()))
+            .displayItems((parameters, output) -> {
+                // 塞尔柱食物
+                output.accept(ModItems.PIDE.get());
+                output.accept(ModItems.HELVA.get());
+                output.accept(ModItems.LOKUM.get());
+                output.accept(ModItems.AYRAN.get());
+                output.accept(ModItems.YOGURT.get());
+                output.accept(ModItems.PISTACHIOS.get());
+
+                // 塞尔柱装备
+                output.accept(ModItems.SELJUK_TURBAN.get());
+                output.accept(ModItems.SELJUK_HELMET.get());
+                output.accept(ModItems.SELJUK_CHESTPLATE.get());
+                output.accept(ModItems.SELJUK_LEGGINGS.get());
+                output.accept(ModItems.SELJUK_BOOTS.get());
+                output.accept(ModItems.SELJUK_SCIMITAR.get());
+                output.accept(ModItems.SELJUK_BOW.get());
+
+                // 塞尔柱特色物品
+                output.accept(ModItems.COTTON.get());
+                output.accept(ModItems.SELJUK_WOOL_CLOTHES.get());
+                output.accept(ModItems.SELJUK_COTTON_CLOTHES.get());
+                output.accept(ModItems.WALL_CARPET_SMALL.get());
+                output.accept(ModItems.WALL_CARPET_MEDIUM.get());
+                output.accept(ModItems.WALL_CARPET_LARGE.get());
+
+                // 塞尔柱建筑材料
+                output.accept(ModItems.GLAZED_TILE.get());
+                output.accept(ModItems.CARVED_STONE.get());
+                output.accept(ModItems.GLAZED_TILE_BLOCK_ITEM.get());
+                output.accept(ModItems.CARVED_STONE_BLOCK_ITEM.get());
+
+                // 塞尔柱贸易品
+                output.accept(ModItems.SUMAC.get());
+                output.accept(ModItems.ROSE_PETALS.get());
+                output.accept(ModItems.ROSE_WATER.get());
             })
             .build());
 
@@ -365,7 +485,15 @@ public class MillCreativeTabs {
                 output.accept(ModItems.VEG_CURRY.get());
                 output.accept(ModItems.MURGH_CURRY.get());
                 output.accept(ModItems.RASGULLA.get());
-                
+
+                // 塞尔柱食物
+                output.accept(ModItems.PIDE.get());
+                output.accept(ModItems.HELVA.get());
+                output.accept(ModItems.LOKUM.get());
+                output.accept(ModItems.AYRAN.get());
+                output.accept(ModItems.YOGURT.get());
+                output.accept(ModItems.PISTACHIOS.get());
+
                 // 因纽特食物
                 output.accept(ModItems.BEAR_MEAT_RAW.get());
                 output.accept(ModItems.BEAR_MEAT_COOKED.get());
@@ -396,7 +524,14 @@ public class MillCreativeTabs {
                 // 基础材料
                 output.accept(ModItems.UNKNOWN_POWDER.get());
                 output.accept(ModItems.GALIANITE_DUST.get());
+                output.accept(ModItems.GALIANITE_ORE_ITEM.get());
                 output.accept(ModItems.BRICK_MOULD.get());
+
+                // Creation Quest Items
+                output.accept(ModItems.SADHU_SCROLL.get());
+                output.accept(ModItems.ALCHEMIST_NOTES.get());
+                output.accept(ModItems.FALLEN_KING_ARTIFACT.get());
+                output.accept(ModItems.AMULET_CREATION.get());
                 
                 // 装饰物品
                 output.accept(ModItems.TAPESTRY.get());
@@ -423,6 +558,49 @@ public class MillCreativeTabs {
                 output.accept(ModItems.PAINT_BUCKET_GREEN.get());
                 output.accept(ModItems.PAINT_BUCKET_RED.get());
                 output.accept(ModItems.PAINT_BUCKET_BLACK.get());
+
+                // 建筑材料（所有文化）
+                output.accept(ModItems.WET_BRICK.get());
+                output.accept(ModItems.MUD_BRICK.get());
+                output.accept(ModItems.COOKED_BRICK.get());
+                output.accept(ModItems.THATCH.get());
+                output.accept(ModItems.RICE_STRAW.get());
+                output.accept(ModItems.WASHI_PAPER.get());
+                output.accept(ModItems.TIMBER_FRAME.get());
+                output.accept(ModItems.WATTLE_DAUB.get());
+                output.accept(ModItems.PLASTER.get());
+                output.accept(ModItems.BYZANTINE_TILE.get());
+                output.accept(ModItems.MARBLE_CHUNK.get());
+                output.accept(ModItems.LIMESTONE.get());
+                output.accept(ModItems.OBSIDIAN_SHARD.get());
+                output.accept(ModItems.GLAZED_TILE.get());
+                output.accept(ModItems.CARVED_STONE.get());
+                output.accept(ModItems.WHALE_BONE.get());
+                output.accept(ModItems.PACKED_SNOW_ITEM.get());
+
+                // 贸易品与染料
+                output.accept(ModItems.COCHINEAL.get());
+                output.accept(ModItems.COCHINEAL_DYE.get());
+                output.accept(ModItems.INDIGO.get());
+                output.accept(ModItems.INDIGO_DYE.get());
+                output.accept(ModItems.SAFFRON.get());
+                output.accept(ModItems.SUMAC.get());
+                output.accept(ModItems.ROSE_PETALS.get());
+                output.accept(ModItems.ROSE_WATER.get());
+                output.accept(ModItems.MUREX_SHELL.get());
+                output.accept(ModItems.TYRIAN_PURPLE.get());
+                output.accept(ModItems.WOAD.get());
+                output.accept(ModItems.WOAD_DYE.get());
+
+                // Lone Structure Loot
+                output.accept(ModItems.ANCIENT_SCROLL.get());
+                output.accept(ModItems.TREASURE_MAP.get());
+                output.accept(ModItems.BANDIT_KEY.get());
+                output.accept(ModItems.ANCIENT_COIN.get());
+                output.accept(ModItems.RUSTED_SWORD.get());
+                output.accept(ModItems.BROKEN_ARMOR_FRAGMENT.get());
+                output.accept(ModItems.MYSTERIOUS_GEM.get());
+                output.accept(ModItems.BANDITS_POUCH.get());
             })
             .build());
 

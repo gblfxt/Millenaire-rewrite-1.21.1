@@ -29,63 +29,94 @@ Originally created as one of Minecraft's most ambitious civilization mods, Mille
 #### Core Systems
 
 - **Advanced Currency System**: Three-tier currency with copper, silver, and gold deniers
-- **Complete Bilingual Translation**: 249 English + 249 Chinese entries, all creative tabs and items fully translated
-- **Creative Mode Tabs**: 8 civilization tabs, all items categorized
-- **Decorative Blocks**: Stone, wood, earth, and more, with full data generation
-- **Magic Items**: Dynamic amulets, wands, and more
+- **Complete Bilingual Translation**: 350+ English + 350+ Chinese entries, all creative tabs and items fully translated
+- **Creative Mode Tabs**: 9 civilization tabs (Norman, Byzantine, Indian, Japanese, Mayan, Seljuk, Inuit, + Blocks, Food, Misc)
+- **Decorative Blocks**: Stone, wood, earth, and culture-specific building materials
+- **Magic Items**: Dynamic amulets, wands, and the legendary Amulet of Creation
+
+#### Item Systems (240+ Items!)
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| **Building Materials** | 30 | Culture-specific blocks and crafting materials |
+| **Quest Items** | 8 | Creation Quest storyline items + Galianite Ore |
+| **Trade Goods** | 14 | Dyes, spices, and luxury items for each culture |
+| **Loot Items** | 8 | Bandit camp and ruins exploration loot |
+| **Tools & Weapons** | 40+ | Culture-specific equipment sets |
+| **Food & Crops** | 45+ | Unique cuisine for each civilization |
+| **Magic & Amulets** | 10+ | Dynamic magical items with special abilities |
+| **Parchments** | 26 | Knowledge scrolls for each culture |
 
 #### Living Villages
 
 - **Dynamic Growth**: Villages expand organically based on population and resources
-- **Cultural Diversity**: Multiple civilizations with unique building styles and customs
+- **Cultural Diversity**: 7 unique civilizations with distinct building styles
 - **Economic Systems**: Complex trade networks and currency exchange
 - **Social Interactions**: Deep villager relationships and reputation systems
 
 #### Cultural Systems
 
-- **Norman, Byzantine, Hindi, Japanese, Mayan, Seljuk, Inuit, Generic**: All cultures implemented in creative tabs and item registration
+All 7 cultures fully implemented with complete item sets:
+
+| Culture | Building Materials | Trade Goods | Food | Tools/Armor |
+|---------|-------------------|-------------|------|-------------|
+| **Norman** | Timber Frame, Wattle & Daub, Plaster | Woad Dye | Cider, Calvados, Tripes | Full set |
+| **Byzantine** | Byzantine Tile, Marble | Tyrian Purple, Murex Shell | Wine, Feta, Souvlaki | Full set |
+| **Indian** | Mud Brick, Cooked Brick | Indigo, Saffron | Curry, Rasgulla | Brick Mould |
+| **Japanese** | Thatch, Washi Paper | - | Sake, Udon, Ikayaki | 3 armor tiers! |
+| **Mayan** | Limestone, Obsidian | Cochineal Dye | Cacauhaa, Masa, Wah | Obsidian tools |
+| **Seljuk** | Glazed Tile, Carved Stone | Sumac, Rose Water | Pide, Helva, Lokum | Scimitar, Bow |
+| **Inuit** | Whale Bone, Packed Snow | - | Bear/Wolf meat, Stews | Fur armor, Ulu |
 
 #### Magic & Technology
 
-- **Dynamic Amulets**: Magical items that change appearance based on environment
+- **Dynamic Amulets**: Color-changing items that respond to environment
+  - Alchemist Amulet: Detects nearby ores
+  - Vishnu Amulet: Senses nearby creatures
+  - Yggdrasil Amulet: Shows altitude information
+  - Skoll & Hati Amulet: Controls day/night cycle
+- **Amulet of Creation**: Legendary quest reward with passive regen and powerful buffs
+- **Wands**: Summoning, Negation, Creative, and Tuning Fork
 - **Advanced Crafting**: Culture-specific recipes and materials
-- **Unique Tools**: Specialized equipment for each civilization
 
 ### Development Status
 
-**Current Version**: `0.2.0-alpha` (NeoForge 1.21.1 Port)
+**Current Version**: `0.3.0-alpha` (NeoForge 1.21.1 Port)
 **Last Updated**: January 17, 2026
 
 #### Completed Systems
 
-| System                 | Items        | Status      | Description                                          |
-| ---------------------- | ------------ | ----------- | ---------------------------------------------------- |
-| **Item System**        | 100+ items   | Complete | All cultural items, tools, food, currency registered |
-| **Currency System**    | 6 currencies | Complete | Multi-cultural monetary system                       |
-| **Food System**        | 30+ foods    | Complete | Culture-specific cuisine with proper nutrition       |
-| **Decorative Blocks**  | 9+ variants  | Complete | Stone, wood, and earth decorative building materials |
-| **Magic Items**        | 5+ amulets   | Complete | Dynamic color-changing magical amulets               |
-| **Core Architecture**  | -            | Complete | Modern NeoForge 1.21.1 foundation                    |
-| **Translation System** | 249+ entries | Complete | English/Chinese, all creative tabs/items translated  |
-| **Creative Tabs**      | 8 cultures   | Complete | All tabs and categorization working                  |
+| System | Items | Status | Description |
+|--------|-------|--------|-------------|
+| **Item System** | 240+ items | ✅ Complete | All cultural items, tools, food, materials registered |
+| **Building Materials** | 30 items | ✅ Complete | Culture-specific building blocks and materials |
+| **Quest System** | 8 items | ✅ Complete | Creation Quest items with special Amulet of Creation |
+| **Trade Goods** | 14 items | ✅ Complete | Dyes, spices, luxury items for trading |
+| **Loot System** | 8 items | ✅ Complete | Exploration rewards for lone structures |
+| **Currency System** | 3 tiers | ✅ Complete | Copper, Silver, Gold deniers |
+| **Food System** | 45+ foods | ✅ Complete | Culture-specific cuisine with effects |
+| **Magic Items** | 10+ items | ✅ Complete | Amulets, wands with special abilities |
+| **Block System** | 25+ blocks | ✅ Complete | Building blocks, ores, functional blocks |
+| **Translation** | 350+ entries | ✅ Complete | English/Chinese for all content |
+| **Creative Tabs** | 9 tabs | ✅ Complete | All cultures + utility tabs |
 
 #### In Progress
 
-| System                  | Progress | Notes                    |
-| ----------------------- | -------- | ------------------------ |
-| **Village Core System** | 30%      | Core village logic       |
-| **Building Framework**  | 15%      | Construction system      |
-| **Entity System**       | 10%      | NPC villagers            |
-| **Mill Chest System**   | 10%      | Secure storage           |
+| System | Progress | Notes |
+|--------|----------|-------|
+| **Village Core System** | 30% | Core village logic |
+| **Building Framework** | 15% | Construction system |
+| **Entity System** | 10% | NPC villagers |
+| **Loot Tables** | 0% | Integration with loot items |
 
 #### Planned Features
 
 - **Mill Chest System**: Secure storage with village integration
 - **Path & Road System**: Cultural building connections
-- **Sign System**: Multi-language village signage
-- **Crop System**: Culture-specific agriculture
+- **Quest Storyline**: Full Creation Quest implementation
 - **AI Villagers**: Smart NPCs with complex behaviors
 - **Building Generator**: Procedural architecture system
+- **World Generation**: Galianite ore spawning, lone structures
 
 ### Technical Details
 
@@ -103,11 +134,12 @@ The port from Forge 1.20.1 to NeoForge 1.21.1 included:
 
 #### Project Statistics
 
-- **Java Classes**: 80+ modern implementations
-- **Texture Assets**: 120+ high-quality PNG files
-- **Generated Resources**: 200+ automatically created files
-- **Registered Items**: 100+ unique items with proper integration
-- **Registered Blocks**: 10+ foundational blocks with entity support
+- **Java Classes**: 90+ modern implementations
+- **Texture Assets**: 150+ high-quality PNG files
+- **Generated Resources**: 250+ automatically created files
+- **Registered Items**: 240+ unique items with proper integration
+- **Registered Blocks**: 25+ blocks with full variant support
+- **Translation Keys**: 350+ bilingual entries
 
 #### Code Quality
 
@@ -158,7 +190,7 @@ We welcome contributions! Please see our development roadmap and pick an area th
 1. **Village Management System** - Core village logic and data structures
 2. **Building Generation** - Automated construction system
 3. **NPC AI System** - Smart villager behaviors
-4. **Cultural Expansion** - Additional civilizations and features
+4. **Loot Table Integration** - Connect loot items to world generation
 
 ### License
 
@@ -190,63 +222,94 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 ### 核心特性
 
 - **三层货币系统**：铜、银、金第纳尔
-- **完整双语翻译**：249 条英文+249 条中文，所有创造标签和物品均已翻译
-- **创造模式标签页**：8 个文明分类，所有物品已归类
-- **装饰方块系统**：石材、木材、土质等，数据自动生成
-- **魔法物品**：动态护符、法杖等
+- **完整双语翻译**：350+ 条英文+350+ 条中文，所有创造标签和物品均已翻译
+- **创造模式标签页**：9 个文明分类（诺曼、拜占庭、印度、日本、玛雅、塞尔柱、因纽特 + 方块、食物、杂项）
+- **装饰方块系统**：石材、木材、土质及文化特色建筑材料
+- **魔法物品**：动态护符、法杖及传奇创世护身符
+
+#### 物品系统（240+ 物品！）
+
+| 类别 | 数量 | 描述 |
+|------|------|------|
+| **建筑材料** | 30 | 文化特色方块和制作材料 |
+| **任务物品** | 8 | 创世任务线物品 + 加里亚奈特矿石 |
+| **贸易品** | 14 | 各文化的染料、香料和奢侈品 |
+| **战利品** | 8 | 强盗营地和遗迹探索奖励 |
+| **工具武器** | 40+ | 文化特色装备套装 |
+| **食物作物** | 45+ | 各文明独特料理 |
+| **魔法护符** | 10+ | 具有特殊能力的动态魔法物品 |
+| **羊皮纸** | 26 | 各文化知识卷轴 |
 
 #### 活跃村庄
 
 - **动态增长**：村庄根据人口和资源有机扩张
-- **文化多样性**：诺曼、拜占庭、印度、日本、玛雅、塞尔柱、因纽特、通用
+- **文化多样性**：7 个独特文明，各具特色建筑风格
 - **经济系统**：复杂的贸易网络和货币交换
 - **社交互动**：深度的村民关系和声望系统
 
 #### 文化系统
 
-- 所有文化已在创造标签和物品注册中实现
+全部 7 种文化已完整实现：
+
+| 文化 | 建筑材料 | 贸易品 | 食物 | 工具/盔甲 |
+|------|----------|--------|------|-----------|
+| **诺曼** | 木框架、编条夯土、灰泥 | 菘蓝染料 | 苹果酒、卡尔瓦多斯 | 完整套装 |
+| **拜占庭** | 拜占庭瓷砖、大理石 | 泰尔紫、骨螺壳 | 葡萄酒、羊奶酪 | 完整套装 |
+| **印度** | 泥砖、烧制砖 | 蓝靛、藏红花 | 咖喱、甜点 | 砖模 |
+| **日本** | 茅草、和纸 | - | 清酒、乌冬面 | 3 级盔甲！ |
+| **玛雅** | 石灰石、黑曜石 | 胭脂红染料 | 可可饮品、玉米饼 | 黑曜石工具 |
+| **塞尔柱** | 琉璃瓦、雕刻石 | 漆树果、玫瑰水 | 土耳其薄饼、软糖 | 弯刀、弓 |
+| **因纽特** | 鲸骨、压实雪 | - | 熊肉、狼肉、炖菜 | 毛皮盔甲、乌卢刀 |
 
 #### 魔法与科技
 
-- **动态护符**：根据环境改变外观的魔法物品
+- **动态护符**：根据环境改变颜色的物品
+  - 炼金术士护符：探测附近矿石
+  - 毗湿奴护符：感知附近生物
+  - 世界树护符：显示高度信息
+  - 斯库尔与哈提护符：控制昼夜循环
+- **创世护身符**：传奇任务奖励，被动回复 + 强力增益
+- **法杖**：召唤、否定、创造、音叉
 - **高级制作**：文化特定的配方和材料
-- **独特工具**：每个文明的专用装备
 
 ### 开发状态
 
-**当前版本**: `0.2.0-alpha` (NeoForge 1.21.1 移植版)
+**当前版本**: `0.3.0-alpha` (NeoForge 1.21.1 移植版)
 **最后更新**: 2026 年 1 月 17 日
 
 #### 已完成系统
 
-| 系统         | 数量       | 状态 | 描述                                  |
-| ------------ | ---------- | ---- | ------------------------------------- |
-| **物品系统** | 100+个物品 | 完成 | 所有文化物品、工具、食物、货币已注册  |
-| **货币系统** | 6 种货币   | 完成 | 多文化货币体系                        |
-| **食物系统** | 30+ 种食物 | 完成 | 文化特色料理，具有合适的营养值        |
-| **装饰方块** | 9+ 个变体  | 完成 | 石材、木材和土质装饰建筑材料          |
-| **魔法物品** | 5+ 个护符  | 完成 | 动态变色魔法护符                      |
-| **核心架构** | -          | 完成 | 现代 NeoForge 1.21.1 基础             |
-| **翻译系统** | 249+条     | 完成 | 英文/中文，所有创造标签和物品均已翻译 |
-| **创造标签** | 8 个文明   | 完成 | 所有标签和分类均已实现                |
+| 系统 | 数量 | 状态 | 描述 |
+|------|------|------|------|
+| **物品系统** | 240+ 物品 | ✅ 完成 | 所有文化物品、工具、食物、材料已注册 |
+| **建筑材料** | 30 物品 | ✅ 完成 | 文化特色建筑方块和材料 |
+| **任务系统** | 8 物品 | ✅ 完成 | 创世任务物品及特殊创世护身符 |
+| **贸易品** | 14 物品 | ✅ 完成 | 染料、香料、贸易奢侈品 |
+| **战利品系统** | 8 物品 | ✅ 完成 | 孤立建筑探索奖励 |
+| **货币系统** | 3 层 | ✅ 完成 | 铜、银、金第纳尔 |
+| **食物系统** | 45+ 食物 | ✅ 完成 | 文化特色料理及效果 |
+| **魔法物品** | 10+ 物品 | ✅ 完成 | 护符、法杖及特殊能力 |
+| **方块系统** | 25+ 方块 | ✅ 完成 | 建筑方块、矿石、功能方块 |
+| **翻译系统** | 350+ 条 | ✅ 完成 | 英文/中文全内容翻译 |
+| **创造标签** | 9 个 | ✅ 完成 | 所有文化 + 实用标签 |
 
 #### 开发中
 
-| 系统             | 进度 | 备注         |
-| ---------------- | ---- | ------------ |
-| **村庄核心系统** | 30%  | 核心村庄逻辑 |
-| **建筑框架**     | 15%  | 建造系统     |
-| **实体系统**     | 10%  | NPC 村民     |
-| **千年箱系统**   | 10%  | 安全储存     |
+| 系统 | 进度 | 备注 |
+|------|------|------|
+| **村庄核心系统** | 30% | 核心村庄逻辑 |
+| **建筑框架** | 15% | 建造系统 |
+| **实体系统** | 10% | NPC 村民 |
+| **战利品表** | 0% | 与战利品物品集成 |
 
 #### 计划功能
 
 - **千年箱系统**: 与村庄集成的安全储存
 - **道路系统**: 文化建筑连接
-- **标志系统**: 多语言村庄标识
-- **作物系统**: 文化特色农业
+- **任务故事线**: 完整创世任务实现
 - **AI 村民**: 具有复杂行为的智能 NPC
 - **建筑生成器**: 程序化建筑系统
+- **世界生成**: 加里亚奈特矿石生成、孤立建筑
 
 ### 技术细节
 
@@ -264,11 +327,12 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 
 #### 项目统计
 
-- **Java 类**: 80+ 个现代实现
-- **材质资产**: 120+ 个高质量 PNG 文件
-- **生成资源**: 200+ 个自动创建的文件
-- **注册物品**: 100+ 个独特物品，完整集成
-- **注册方块**: 10+ 个基础方块，支持实体
+- **Java 类**: 90+ 个现代实现
+- **材质资产**: 150+ 个高质量 PNG 文件
+- **生成资源**: 250+ 个自动创建的文件
+- **注册物品**: 240+ 个独特物品，完整集成
+- **注册方块**: 25+ 个方块，支持完整变体
+- **翻译键**: 350+ 条双语条目
 
 #### 代码质量
 
@@ -319,7 +383,7 @@ cd Millenaire-rewrite-1.21.1
 1. **村庄管理系统** - 核心村庄逻辑和数据结构
 2. **建筑生成** - 自动化建造系统
 3. **NPC AI 系统** - 智能村民行为
-4. **文化扩展** - 额外的文明和功能
+4. **战利品表集成** - 将战利品物品连接到世界生成
 
 ### 许可证
 

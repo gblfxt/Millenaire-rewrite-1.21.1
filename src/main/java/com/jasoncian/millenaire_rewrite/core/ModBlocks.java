@@ -218,6 +218,159 @@ public class ModBlocks {
             () -> ModItems.CHERRY_BLOSSOM.get(),
             () -> net.minecraft.world.item.Items.CHERRY_SAPLING));
 
+    // ================ Building Material Blocks ================
+
+    // Indian Building Blocks
+    /** Mud Brick Block - Indian building material */
+    public static final DeferredHolder<Block, Block> MUD_BRICK_BLOCK =
+        BLOCKS.register("mud_brick_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_BROWN)
+                .strength(1.5F)
+                .sound(SoundType.MUD_BRICKS)
+                .requiresCorrectToolForDrops()
+        ));
+
+    /** Cooked Brick Block - Fired Indian building material */
+    public static final DeferredHolder<Block, Block> COOKED_BRICK_BLOCK =
+        BLOCKS.register("cooked_brick_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_RED)
+                .strength(2.0F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops()
+        ));
+
+    // Japanese Building Blocks
+    /** Thatch Block - Japanese roofing */
+    public static final DeferredHolder<Block, Block> THATCH_BLOCK =
+        BLOCKS.register("thatch_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_YELLOW)
+                .strength(0.5F)
+                .sound(SoundType.GRASS)
+                .ignitedByLava()
+        ));
+
+    /** Paper Wall Block - Japanese shoji screen */
+    public static final DeferredHolder<Block, Block> PAPER_WALL_BLOCK =
+        BLOCKS.register("paper_wall_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.SNOW)
+                .strength(0.3F)
+                .sound(SoundType.WOOL)
+                .noOcclusion()
+                .ignitedByLava()
+        ));
+
+    // Norman Building Blocks
+    /** Timber Frame Block - Norman half-timbered construction */
+    public static final DeferredHolder<Block, Block> TIMBER_FRAME_BLOCK =
+        BLOCKS.register("timber_frame_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.WOOD)
+                .strength(2.0F)
+                .sound(SoundType.WOOD)
+                .ignitedByLava()
+        ));
+
+    /** Wattle and Daub Block - Norman wall material */
+    public static final DeferredHolder<Block, Block> WATTLE_DAUB_BLOCK =
+        BLOCKS.register("wattle_daub_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_WHITE)
+                .strength(1.0F)
+                .sound(SoundType.GRAVEL)
+        ));
+
+    /** Plaster Block - Finished wall material */
+    public static final DeferredHolder<Block, Block> PLASTER_BLOCK =
+        BLOCKS.register("plaster_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.SNOW)
+                .strength(1.0F)
+                .sound(SoundType.CALCITE)
+        ));
+
+    // Byzantine Building Blocks
+    /** Byzantine Tile Block - Decorative Byzantine tile */
+    public static final DeferredHolder<Block, Block> BYZANTINE_TILE_BLOCK =
+        BLOCKS.register("byzantine_tile_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_ORANGE)
+                .strength(1.5F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops()
+        ));
+
+    /** Marble Block - Byzantine marble */
+    public static final DeferredHolder<Block, Block> MARBLE_BLOCK =
+        BLOCKS.register("marble_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.QUARTZ)
+                .strength(1.5F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops()
+        ));
+
+    // Mayan Building Blocks
+    /** Limestone Block - Mayan building stone */
+    public static final DeferredHolder<Block, Block> LIMESTONE_BLOCK =
+        BLOCKS.register("limestone_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.SAND)
+                .strength(1.5F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops()
+        ));
+
+    // Seljuk Building Blocks
+    /** Glazed Tile Block - Decorative Seljuk tile */
+    public static final DeferredHolder<Block, Block> GLAZED_TILE_BLOCK =
+        BLOCKS.register("glazed_tile_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_BLUE)
+                .strength(1.5F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops()
+        ));
+
+    /** Carved Stone Block - Ornamental Seljuk stonework */
+    public static final DeferredHolder<Block, Block> CARVED_STONE_BLOCK =
+        BLOCKS.register("carved_stone_block", () -> new Block(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.STONE)
+                .strength(2.0F, 6.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops()
+        ));
+
+    // ================ Quest Related Blocks ================
+
+    /** Galianite Ore - Rare ore found deep underground, used in Creation Quest */
+    public static final DeferredHolder<Block, Block> GALIANITE_ORE =
+        BLOCKS.register("galianite_ore", () -> new net.minecraft.world.level.block.DropExperienceBlock(
+            net.minecraft.util.valueproviders.UniformInt.of(3, 7),
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.STONE)
+                .strength(3.0F, 3.0F)
+                .sound(SoundType.STONE)
+                .requiresCorrectToolForDrops()
+                .lightLevel(state -> 3) // Slight glow
+        ));
+
+    /** Deepslate Galianite Ore - Deepslate variant found in deeper layers */
+    public static final DeferredHolder<Block, Block> DEEPSLATE_GALIANITE_ORE =
+        BLOCKS.register("deepslate_galianite_ore", () -> new net.minecraft.world.level.block.DropExperienceBlock(
+            net.minecraft.util.valueproviders.UniformInt.of(3, 7),
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.DEEPSLATE)
+                .strength(4.5F, 3.0F)
+                .sound(SoundType.DEEPSLATE)
+                .requiresCorrectToolForDrops()
+                .lightLevel(state -> 3) // Slight glow
+        ));
+
     // ================ 方块属性辅助方法 ================
 
     /**
